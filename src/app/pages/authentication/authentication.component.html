@@ -1,0 +1,49 @@
+<div class="full-container-main">
+    <div class="bande-top"></div>
+  
+    <div class="full-container-main-login">
+      <div class="container">
+        <div class="heading">Login</div>
+        <br>
+        <form class="form" action="">
+          <input
+            placeholder="E-mail"
+            id="email"
+            name="email"
+            type="email"
+            class="input"
+            required=""
+          />
+          <br>
+          
+          
+          <input
+            placeholder="Password"
+            id="password"
+            name="password"
+            type="password"
+            class="input"
+            required=""
+          />
+          <br>
+          <span class="forgot-password"><a href="#">Mot passe oublié ?</a></span>
+          <br>
+          <br>
+          
+          <input  [routerLink]="['/acceuil']" value="Se connecter" type="submit" class="login-button" />
+        </form>
+        <div class="social-account-container">
+          <div class="g-recaptcha" data-sitekey="VOTRE_SITE_KEY"></div>
+        </div>
+        <div class="login-logo-imgg">
+         
+        </div>
+        <div class="login-logo-img">
+            <img src="../../../../assets/logo-adn@3x.png" class="img-responsive" alt="logo actia">
+         
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,101 @@
+
+<div class="container">
+    <div class="header">
+      <h5>Gestion des incidents</h5>
+      <h6 class="subheader">Rechercher un incident</h6>
+    </div>
+    <div class="search-form">
+      <form [formGroup]="options">
+        <div class="search-criteria">
+          <div class="criteria-item">
+            <label for="product">Produit:</label>
+            <mat-form-field
+              [hideRequiredMarker]="hideRequiredControl.value"
+              [floatLabel]="getFloatLabelValue()"
+            >
+              <mat-select required>
+                <mat-option>-- Aucun --</mat-option>
+                <mat-option value="option">Option</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="criteria-item">
+            <label for="incidentType">Type Incident:</label>
+            <mat-form-field
+              [hideRequiredMarker]="hideRequiredControl.value"
+              [floatLabel]="getFloatLabelValue()"
+            >
+              <mat-select required>
+                <mat-option>-- Aucun --</mat-option>
+                <mat-option value="option">Option</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+  
+        <div class="search-options">
+          <div class="option-item">
+            <input type="radio" name="option" id="serialNumber" (change)="toggleField('serialNumber')">
+            <label for="serialNumber" class="code-label">Numéro de série</label>
+            <input type="text" [disabled]="!isSerialNumberSelected">
+          </div>
+          <div class="option-item">
+            <input type="radio" name="option" id="code" (change)="toggleField('code')">
+            <label for="code" class="code-label">Code</label>
+            <input type="text" [disabled]="!isCodeSelected">
+          </div>
+        </div>
+        <div class="button-container">
+          <button class="btn btn-warning" type="button">
+            <mat-icon>search</mat-icon> Rechercher
+          </button>
+          <button class="btn btn-danger" type="button" (click)="cancelSearch()">
+            <mat-icon>cancel</mat-icon> Annuler
+          </button>
+        </div>
+        
+      </form>
+    </div>
+  </div>
+  <div class="container">
+    <div class="table-container">
+  
+    <table class="table table-borderless ng-table">
+      <thead>
+        <tr>
+          <th>Type Incident</th>
+          <th>Référence du Produit</th>
+          <th>Numéro de Série</th>
+          <th>Remarque</th>
+          <th>Type de Problème</th>
+          <th>Problème Concret</th>
+          <th>Transporteur</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let incident of incidents; let i = index" 
+        (click)="selectIncident(incident,i); selectedRowIndex = i" 
+        [ngClass]="{'selected-incident': selectedRowIndex === i}">        <td>{{ incident.typeIncident }}</td>
+          <td>{{ incident.refProduit }}</td>
+          <td>{{ incident.numSerie }}</td>
+          <td>{{ incident.remarque }}</td>
+          <td>{{ incident.typeProbleme }}</td>
+          <td>{{ incident.problemeConcret }}</td>
+          <td>{{ incident.transporteur }}</td>
+          
+        </tr>
+      </tbody>
+    </table>
+  
+    </div>
+  
+    <mat-paginator
+      [length]="1000"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </div>
+  

@@ -1,0 +1,31 @@
+.mat-icon.icon {
+  font-size: 26px; /* Augmentez la taille de la police de l'icône */
+  vertical-align: middle; 
+}
+
+.custom-button:hover {
+  background-color: #b30000; 
+}
+
+.button-container {
+  position: fixed; 
+  bottom: 20px; 
+  right: 20px; 
+  z-index: 1000; 
+}
+
+.custom-button {
+  background-color: #ff0033;
+  color: white;
+  border: none;
+  border-radius: 80%;
+  padding: 0; 
+  width: 80px; 
+  height: 80px;
+  font-size: 16px; 
+  cursor: pointer;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  transition: background-color 0.3s ease;
+}

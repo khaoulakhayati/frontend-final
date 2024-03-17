@@ -1,0 +1,208 @@
+$font-family-base: 'Open Sans', 'Arial';
+
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+.material-symbols-outlined {
+  font-family: 'Material Icons Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 15px;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.header h5 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+
+
+.search-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-criteria,
+.search-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.criteria-item,
+.option-item {
+  flex: 1;
+}
+
+.criteria-item label,
+.option-item label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+mat-form-field {
+  width: 80%; /* Utilisez la largeur totale de son conteneur */
+  height: 40px; /* Définissez la hauteur désirée */
+  background-color: #ffffff;
+  border: 0.5px solid #ccc;
+  border-radius: 5px;
+}
+
+mat-select {
+  width: 100%; /* Utilisez la largeur totale de son conteneur */
+  border: none; /* Supprimez la bordure par défaut */
+  outline: none; /* Supprimez le contour par défaut */
+}
+
+
+mat-checkbox {
+  margin-right: 10px; /* Add margin for better spacing */
+}
+
+input[type="text"] {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 40px; 
+  font-size: 14px; 
+
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end; 
+  
+}
+
+
+
+.btn-danger {
+  background-color: #546472 ; /* Red color for cancel button */
+  color: #fff;
+}
+
+.btn-warning {
+  background-color: #bdd248; /* Yellow color for search button */
+  color: #ffffff;
+}
+
+.btn:hover {
+  opacity: 0.8; /* Add hover effect for buttons */
+}
+
+
+.btn {
+  padding: 6px 10px; 
+  font-size: 12px; 
+}
+
+.mat-icon {
+  font-size: 16px; 
+  margin-right: 4px; 
+  vertical-align: middle; 
+}
+
+
+
+/* Affichez les 7 premières colonnes par défaut */
+@media (min-width: 768px) {
+  tr td:nth-child(n+8) {
+    display: table-cell;
+  }
+}
+
+
+
+
+
+.header {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+h5 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #24a10b;
+}
+
+h6.subheader {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #777;
+}
+
+
+
+
+
+
+/* Styles pour le conteneur de la pagination */
+ul.pagination {
+  margin-bottom: 0 !important;
+}
+
+/* Styles pour le conteneur de la table */
+.table-container {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Styles pour le tableau */
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Styles pour les en-têtes de colonne */
+.table-container th, .table-container td {
+  border: 1px solid #ddd;
+  padding: 7px;
+  text-align: left;
+  font-size: 9px;
+  font-weight: bold;
+  color: #939598; /* Correspond à $secondary-text-color */
+}
+
+/* Styles pour les en-têtes de colonne spécifiques */
+.table-container th {
+  color: #686a6d;
+  font-size: 12px;
+  background-color: #eae0e0;
+}
+
+/* Styles pour les lignes de tableau impaires */
+.table-container tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Styles pour les lignes de tableau actives */
+.table-container tr.active,
+.table-container tr.selected-incident {
+  background-color: #cfe5fa; 
+  border-left: 0.5em solid #bdd248; 
+}
+
+.search-form input[type="text"],
+.search-form select {
+  border-left: 0.5em solid #087441;
+}
+
+
+

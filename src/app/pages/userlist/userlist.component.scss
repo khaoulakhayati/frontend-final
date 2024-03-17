@@ -1,0 +1,59 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  .buttons {
+    margin-bottom: 20px;
+  }
+  
+  .alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .alert {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .table th {
+    font-weight: bold;
+  }
+  
+  .table td,
+.table th {
+    font-size: 0.9rem; /* Vous pouvez ajuster cette valeur selon vos préférences */
+}
+
+  .table td,
+  .table th {
+    vertical-align: middle;
+  }
+  
+  .badge {
+    font-size: 0.8rem;
+  }
+  
+  .item-count {
+    margin-top: 20px;
+  }
+  
+  .pagination {
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  .pagination button {
+    margin: 0 5px;
+  }
+  

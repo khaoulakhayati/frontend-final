@@ -28,7 +28,10 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import { ManagementUserComponent } from './pages/management-user/management-user.component';
 import { CreeuserComponent } from './pages/creeuser/creeuser.component';
 import { UserlistComponent } from './pages/userlist/userlist.component';
-
+import { FormOutilComponent } from './pages/outils/form-outil/form-outil.component';
+import { SearchOutilComponent } from './pages/outils/search-outil/search-outil.component';
+import { HomeOutilComponent } from './pages/outils/home-outil/home-outil.component';
+import {MatTabsModule} from '@angular/material/tabs'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +44,10 @@ import { UserlistComponent } from './pages/userlist/userlist.component';
     DialogComponent,
     ManagementUserComponent,
     CreeuserComponent,
-    UserlistComponent
+    UserlistComponent,
+    FormOutilComponent,
+    SearchOutilComponent,
+    HomeOutilComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +69,7 @@ import { UserlistComponent } from './pages/userlist/userlist.component';
     MatDatepickerModule,
     MatGridListModule,
     FontAwesomeModule,
+    MatTabsModule
     
   
   ],

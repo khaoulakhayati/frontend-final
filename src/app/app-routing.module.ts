@@ -5,6 +5,7 @@ import { AuthenticationComponent } from './pages/authentication/authentication.c
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './pages/incidents/home/home.component';
 import { ManagementUserComponent } from './pages/management-user/management-user.component';
+import { HomeOutilComponent } from './pages/outils/home-outil/home-outil.component';
 
 const routes: Routes = [
 
@@ -27,6 +28,10 @@ const routes: Routes = [
     component:ManagementUserComponent ,
   },
 
+  {
+    path: 'homeOutil',
+    component: HomeOutilComponent,
+  },
 
   { path: 'home', component: HomeComponent },
 

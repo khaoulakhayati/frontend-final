@@ -137,35 +137,7 @@ textarea#remarque {
   vertical-align: middle;
 }
 
-.table-container {
-  margin-top: 20px; 
-}
 
-.table {
-  width: 100%; 
-  border-collapse: collapse; 
-}
-
-.table th, .table td {
-  padding: 10px; 
-  text-align: left; 
-  border: 1px solid #ddd; 
-  font-size: 14px; 
-}
-
-.table th {
-  background-color: #f2f2f2; 
-  font-weight: bold; 
-  font-size: 16px; 
-}
-
-.table tbody tr:nth-child(even) {
-  background-color: #f9f9f9; 
-}
-
-.table tbody tr:hover {
-  background-color: #e2e2e2; 
-}
 
 
 .mat-icon {
@@ -247,3 +219,44 @@ textarea#remarque {
   margin-right: 8px;
   vertical-align: middle;
 }
+
+
+
+
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.alert {
+  background-color: #d1ecf1;
+  color: #0c5460;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.table th {
+  font-weight: bold;
+}
+
+.table td,
+.table th {
+  font-size: 0.9rem; 
+}
+.table td,
+.table th {
+  vertical-align: middle;
+}
+
+.badge {
+  font-size: 0.8rem;
+}
+
+.item-count {
+  margin-top: 20px;
+}
+
+

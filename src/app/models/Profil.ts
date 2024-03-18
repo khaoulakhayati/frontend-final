@@ -1,0 +1,10 @@
+export enum Profil {
+    ADMIN = 'ADMIN',
+    SUPERVISEUR = 'SUPERVISEUR',
+    CONTACT = 'CONTACT',
+    ACTIA = 'ACTIA',
+    MAINTENEUR = 'MAINTENEUR',
+    TRANSPORT = 'TRANSPORT',
+    NONE = 'NONE',
+    SITEADMIN = 'SITEADMIN'
+  }

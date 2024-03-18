@@ -130,21 +130,28 @@
   
   
   
-  <!-- Tableau -->
-  <div *ngIf="showTable" class="table-container">
-    <table class="table">
+
+
+
+
+      <!-- Tableau -->
+      <div class="table-responsive" style="max-height: 300px; overflow-y: auto;" *ngIf="showTable" >
+        <table class="table table-striped" style="width: 100%; table-layout: auto;">
       <thead>
         <tr>
+          <th></th>
           <th>Colonne 1</th>
           <th>Colonne 2</th>
         </tr>
       </thead>
       <tbody>
-  
         <tr>
+          <td><a href="#">1</a></td>
+        
+       
           <td>Donnée 1</td>
           <td>Donnée 2</td>
-       
+        
         </tr>
       </tbody>
     </table>

@@ -4,6 +4,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './pages/incidents/home/home.component';
+import { ManagementUserComponent } from './pages/management-user/management-user.component';
 
 const routes: Routes = [
 
@@ -19,6 +20,13 @@ const routes: Routes = [
     path: 'acceuil',
     component: DashboardComponent,
   },
+
+
+  {
+    path: 'listUser',
+    component:ManagementUserComponent ,
+  },
+
 
   { path: 'home', component: HomeComponent },
 

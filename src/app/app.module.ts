@@ -25,6 +25,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DialogComponent } from './components/dialog/dialog.component';
+import { ManagementUserComponent } from './pages/management-user/management-user.component';
+import { CreeuserComponent } from './pages/creeuser/creeuser.component';
+import { UserlistComponent } from './pages/userlist/userlist.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { DialogComponent } from './components/dialog/dialog.component';
     HomeComponent,
     DashboardComponent,
     NavbarComponent,
-    DialogComponent
+    DialogComponent,
+    ManagementUserComponent,
+    CreeuserComponent,
+    UserlistComponent
   ],
   imports: [
     BrowserModule,

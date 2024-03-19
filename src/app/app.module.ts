@@ -32,6 +32,9 @@ import { FormOutilComponent } from './pages/outils/form-outil/form-outil.compone
 import { SearchOutilComponent } from './pages/outils/search-outil/search-outil.component';
 import { HomeOutilComponent } from './pages/outils/home-outil/home-outil.component';
 import {MatTabsModule} from '@angular/material/tabs'; 
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { JwtModule } from '@auth0/angular-jwt';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +56,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     MatCheckboxModule,
     MatRadioModule,
@@ -69,11 +73,28 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatDatepickerModule,
     MatGridListModule,
     FontAwesomeModule,
-    MatTabsModule
-    
+    MatTabsModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-XSRF-TOKEN'
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        },
+        allowedDomains: ['*'], 
+        disallowedRoutes: [] 
+      }
+    })
   
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
     provideClientHydration(),
     provideAnimationsAsync()
   ],

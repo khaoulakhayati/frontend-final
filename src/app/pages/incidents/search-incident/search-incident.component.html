@@ -8,7 +8,8 @@
       <form [formGroup]="options">
         <div class="search-criteria">
           <div class="criteria-item">
-            <label for="product">Produit:</label>
+            <label for="product">Produit: <mat-icon>laptop</mat-icon> </label>
+            
             <mat-form-field
               [hideRequiredMarker]="hideRequiredControl.value"
               [floatLabel]="getFloatLabelValue()"
@@ -20,7 +21,8 @@
             </mat-form-field>
           </div>
           <div class="criteria-item">
-            <label for="incidentType">Type Incident:</label>
+            <label for="incidentType">Type Incident:  <mat-icon>bug_report</mat-icon></label>
+           
             <mat-form-field
               [hideRequiredMarker]="hideRequiredControl.value"
               [floatLabel]="getFloatLabelValue()"
@@ -58,9 +60,8 @@
     </div>
   </div>
   <div class="container">
-    <div class="table-container">
-  
-    <table class="table table-borderless ng-table">
+    <div class="table-responsive" style="max-height: 370px; overflow-y: auto;" >
+      <table class="table table-striped" style="width: 100%; table-layout: auto;">
       <thead>
         <tr>
           <th>Type Incident</th>

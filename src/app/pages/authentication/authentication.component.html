@@ -5,14 +5,15 @@
       <div class="container">
         <div class="heading">Login</div>
         <br>
-        <form class="form" action="">
+        <form class="form" (ngSubmit)="onSubmit()"> 
           <input
-            placeholder="E-mail"
-            id="email"
-            name="email"
-            type="email"
+            placeholder="login"
+            id="login"
+            name="login"
+            type="login"
             class="input"
             required=""
+            [(ngModel)]="loginForm.login"
           />
           <br>
           
@@ -24,13 +25,14 @@
             type="password"
             class="input"
             required=""
+            [(ngModel)]="loginForm.password" 
           />
           <br>
           <span class="forgot-password"><a href="#">Mot passe oublié ?</a></span>
           <br>
           <br>
           
-          <input  [routerLink]="['/acceuil']" value="Se connecter" type="submit" class="login-button" />
+          <input   value="Se connecter" type="submit" class="login-button" />
         </form>
         <div class="social-account-container">
           <div class="g-recaptcha" data-sitekey="VOTRE_SITE_KEY"></div>

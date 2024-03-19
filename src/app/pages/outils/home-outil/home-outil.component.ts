@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrl: './home-outil.component.scss'
 })
 export class HomeOutilComponent {
+  showForm: boolean = false;
+  showCreeoutil: boolean = false;
+  isAddingOutil: boolean = false;
+  showCreeoutilForm() {
+    this.showCreeoutil = true;
+  }
+
+  cancelCreation() {
+    this.showCreeoutil = false;
+  }
 
 }

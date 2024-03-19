@@ -34,6 +34,7 @@ label {
 .button-container {
     display: flex;
     justify-content: flex-end; 
+    gap: 10px;
 }
 
 .btn {
@@ -71,3 +72,44 @@ label {
     margin-right: 4px; 
     vertical-align: middle; 
 }
+
+
+.table th {
+    font-weight: bold;
+    color: #686a6d;
+  }
+  
+  .table td,
+  .table th {
+    font-size: 0.9rem; 
+  }
+  .table td,
+  .table th {
+    vertical-align: middle;
+  }
+  
+  .badge {
+    font-size: 0.8rem;
+  }
+  
+  .item-count {
+    margin-top: 20px;
+  }
+  
+  
+  
+  /* Styles pour les lignes de tableau actives */
+  .table-responsive tr.active,
+  .table-responsive tr.selected-incident {
+    background-color: #cfe5fa; 
+    border-left: 0.5em solid #bdd248; 
+  }
+  
+  .search-form input[type="text"],
+  .search-form select {
+    border-left: 0.5em solid #087441;
+  }
+  
+  
+  
+  

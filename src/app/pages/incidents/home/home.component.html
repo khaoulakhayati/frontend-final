@@ -10,12 +10,16 @@
     </div>
     <div class="right-panel" style="border: 0.5px solid #bdd248">
       <div class="button-container">
-        <button class="btn btn-besoin" (click)="toggleForm()">
-          <mat-icon>add</mat-icon> Ajouter
+        <button class="btn btn-besoin" type="button" (click)="cancelForm()" *ngIf="isEditingIncident">
+          <mat-icon>delete</mat-icon> Supprimer
         </button>
         <button class="btn btn-besoin" type="button" (click)="cancelForm()" *ngIf="isAddingIncident || isEditingIncident">
           <mat-icon>cancel</mat-icon> Annuler
         </button>
+        <button class="btn btn-besoin" (click)="toggleForm()">
+          <mat-icon>add</mat-icon> Ajouter
+        </button>
+ 
       </div>
 
       <!-- Affichage du formulaire d'ajout ou de modification -->

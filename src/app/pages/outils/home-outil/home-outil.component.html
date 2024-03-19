@@ -9,16 +9,18 @@
     </div>
     <div class="right-panel" style="border: 0.5px solid #bdd248">
       <div class="button-container">
-        <button class="btn btn-besoin" >
-          <mat-icon>add</mat-icon> Ajouter
-        </button>
-        <button class="btn btn-besoin" type="button" >
+        
+        <button class="btn btn-besoin" (click)="cancelCreation()" *ngIf="showCreeoutil">
           <mat-icon>cancel</mat-icon> Annuler
         </button>
+        <button class="btn btn-besoin" (click)="showCreeoutilForm()">
+          <mat-icon>add</mat-icon> Ajouter
+        </button>
+     
       </div>
 
-      <!-- Affichage du formulaire d'ajout ou de modification -->
-<app-form-outil></app-form-outil>
+
+<app-form-outil *ngIf="showCreeoutil"  ></app-form-outil>
     </div>
   </div>
 </div>

@@ -9,12 +9,13 @@
       </div>
       <div class="right-panel" style="border: 0.5px  solid #bdd248">
         <div class="button-container">
+          <button class="btn btn-besoin" (click)="cancelCreation()" *ngIf="showCreeuser">
+            <mat-icon>cancel</mat-icon> Annuler
+          </button>
             <button class="btn btn-besoin" (click)="showCreeuserForm()">
                 <mat-icon>add</mat-icon> Ajouter
               </button>
-              <button class="btn btn-besoin" (click)="cancelCreation()">
-                <mat-icon>cancel</mat-icon> Annuler
-              </button>
+          
         </div>
   
      

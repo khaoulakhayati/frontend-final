@@ -35,7 +35,7 @@ export class HomeComponent {
   toggleForm() {
     this.showForm = !this.showForm;
     this.isAddingIncident = true;
-    this.isEditable = true; // Si l'édition est souhaitée dès l'ajout, décommentez cette ligne
+    this.isEditable = true;
   }
   editIncident() {
     console.log('Incident à modifier :', this.selectedIncident);

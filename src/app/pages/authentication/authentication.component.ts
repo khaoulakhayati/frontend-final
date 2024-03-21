@@ -20,41 +20,45 @@ export class AuthenticationComponent  implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {}
-  onSubmit() {
-    this.authService.authenticate(this.loginForm).subscribe(
-      response => {
-        const accessToken = response.access_token;
-        const refreshToken = response.refresh_token;
-        localStorage.setItem('access_token', accessToken);
-        localStorage.setItem('refresh_token', refreshToken);
-  
-        const decodedToken = this.authService.decodeToken(accessToken);
-  
-        localStorage.setItem('user_info', JSON.stringify(decodedToken));
-        const userInfo = localStorage.getItem('user_info');
-        if (userInfo !== null) {
-          const userInfoObject = JSON.parse(userInfo);
-          this.login = userInfoObject.sub;
-  
-          this.authService.getUserBylogin(this.login).subscribe(
-            (user: RegisterRequest) => {
-              localStorage.setItem('user', JSON.stringify(user));
-              this.router.navigate(['/acceuil']);
-            },
-            error => {
-              console.error(error);
-            }
-          );
-        } else {
-          // Item doesn't exist
-        }
-      },
-      error => {
-        console.error(error);
-      }
-    );
+  ngOnInit(): void {
+/*
+    const accessToken = localStorage.getItem('access_token');
+    if (accessToken) {
+      const decodedToken = this.authService.decodeToken(accessToken);
+      console.log('User ID:', decodedToken.userId); // Assurez-vous que le nom de la propriété userId est correct
+    }
+  */
   }
+onSubmit() {
+  this.authService.authenticate(this.loginForm).subscribe(
+    response => {
+      const accessToken = response.access_token;
+      const refreshToken = response.refresh_token;
+      
+      // Storing tokens in the AuthService
+      this.authService.setTokens(accessToken, refreshToken);
+      
+      const decodedToken = this.authService.decodeToken(accessToken);
+      
+      // Storing user info in session
+      sessionStorage.setItem('user_info', JSON.stringify(decodedToken));
+      
+      this.authService.getUserBylogin(decodedToken.sub).subscribe(
+        (user: RegisterRequest) => {
+          // Storing user details in session
+          sessionStorage.setItem('user', JSON.stringify(user));
+          this.router.navigate(['/acceuil']);
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    },
+    error => {
+      console.error(error);
+    }
+  );
+}
 
 
   

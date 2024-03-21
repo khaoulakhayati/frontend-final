@@ -11,12 +11,13 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
 
   private baseUrl = environment.apiUrl + 'auth';
-
+  private accessToken: string | undefined;
+  private refreshToken: string | undefined;
   private refreshTokenUrl = '${this.baseUrl}/refresh-token';
   constructor(private http: HttpClient  ,private jwtHelper: JwtHelperService) { }
 
   authenticate(request: AuthenticationRequest): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/authenticate`, request);
+    return this.http.post<any>(`${this.baseUrl}/authenticate`, request, { withCredentials: true });
   }
 
   register(request: RegisterRequest): Observable<any> {
@@ -24,18 +25,11 @@ export class AuthService {
   }
 
   refreshAccessToken(): Observable<any> {
-    const refreshToken = localStorage.getItem('refresh_token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${refreshToken}`
-    });
-
-    return this.http.post(this.refreshTokenUrl,  { headers });
+    return this.http.post<any>(this.refreshTokenUrl, null, { withCredentials: true });
   }
 
-
   getAllUsers(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/users`);
+    return this.http.get<any>(`${this.baseUrl}/users`, { withCredentials: true });
   }
 
   isAuthenticated(): boolean {
@@ -44,27 +38,34 @@ export class AuthService {
    
     return !!bearerToken; 
   }
-
-  logout() {
-    const url = '${this.baseUrl}/logout';
-    return this.http.post(url, null);
+  setTokens(accessToken: string, refreshToken: string): void {
+    this.accessToken = accessToken;
+    this.refreshToken = refreshToken;
   }
 
+  getAccessToken(): string | undefined {
+    return this.accessToken;
+  }
+
+  getRefreshToken(): string | undefined {
+    return this.refreshToken;
+  }
+  logout() {
+    this.accessToken = undefined;
+    this.refreshToken = undefined;
+    // Supprimer les tokens du stockage de session
+    sessionStorage.removeItem('user_info');
+    sessionStorage.removeItem('user');
+    // Supprimer les cookies
+    document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'refresh_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    const url = `${this.baseUrl}/logout`;
+    return this.http.post(url, null, { withCredentials: true });
+  }
 
   decodeToken(token: string): any {
     return this.jwtHelper.decodeToken(token);
   }
-
-
-  getUserIdFromToken(): number | null {
-    const token = localStorage.getItem('access_token');
-    if (token) {
-      const decodedToken = this.jwtHelper.decodeToken(token);
-      return decodedToken.id;
-    }
-    return null;
-  }
-
 
   getUserBylogin(login: string): Observable<RegisterRequest> {
 
@@ -80,6 +81,32 @@ export class AuthService {
   }
 
 
+  getCookie(name: string): string | null {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop()?.split(';').shift() || null;
+    return null;
+  }
+/*
+
+ 
+
+
+  getUserIdFromToken(): number | null {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      return decodedToken.id;
+    }
+    return null;
+  }
+
+
+
+
+
+
+/*
   getUserRole(): string | null {
     const userData = localStorage.getItem('user');
     if (userData) {
@@ -89,4 +116,5 @@ export class AuthService {
     return null; 
 
   }
+  */
 }

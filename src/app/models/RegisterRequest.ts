@@ -11,5 +11,5 @@ export interface RegisterRequest {
     mobile?: string;
     fax?: string;
     email?: string;
-    role: Profil;
+    role?: Profil;
   }

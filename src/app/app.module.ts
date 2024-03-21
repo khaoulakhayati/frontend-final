@@ -35,6 +35,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { JwtModule } from '@auth0/angular-jwt';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,6 +98,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     },
     provideClientHydration(),
     provideAnimationsAsync()
+
   ],
   bootstrap: [AppComponent]
 })

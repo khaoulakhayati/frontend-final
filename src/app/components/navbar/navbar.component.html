@@ -138,13 +138,12 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a class="nav-link d-flex align-items-center">
+        <a class="nav-link d-flex align-items-center" (click)="logout()">
           <mat-icon>exit_to_app</mat-icon>
-          <span class="hidden-md hidden-sm" [routerLink]="['/login']"
-            >Logout</span
-          >
+          <span class="hidden-md hidden-sm">Logout</span>
         </a>
       </li>
+      
       <!--
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
           

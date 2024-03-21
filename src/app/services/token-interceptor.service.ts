@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { AuthService } from './auth.service';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable, catchError, switchMap, throwError } from 'rxjs';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenInterceptorService implements HttpInterceptor {
   constructor(private authService: AuthService) {}
+
+  /*
   private publicRoutes: string[] = [''];
 
   intercept(
@@ -59,4 +62,24 @@ export class TokenInterceptorService implements HttpInterceptor {
   private isPublicRoute(url: string): boolean {
     return this.publicRoutes.some(route => url.endsWith(route));
   }
+*/
+intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  const accessToken = this.authService.getAccessToken();
+
+
+
+  if (accessToken) {
+    console.log('Access Token:', accessToken); // Ajouter un console.log() pour afficher le jeton d'authentification
+
+    req = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    });
+  }
+
+  return next.handle(req);
+}
+
+
 }

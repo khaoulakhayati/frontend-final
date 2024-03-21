@@ -39,13 +39,13 @@ onSubmit() {
       this.authService.setTokens(accessToken, refreshToken);
       
       const decodedToken = this.authService.decodeToken(accessToken);
-      
-      // Storing user info in session
-      sessionStorage.setItem('user_info', JSON.stringify(decodedToken));
-      
+   
+      sessionStorage.setItem('access_token', accessToken);
+
+      sessionStorage.setItem      
       this.authService.getUserBylogin(decodedToken.sub).subscribe(
         (user: RegisterRequest) => {
-          // Storing user details in session
+       
           sessionStorage.setItem('user', JSON.stringify(user));
           this.router.navigate(['/acceuil']);
         },

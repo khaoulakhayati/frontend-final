@@ -32,7 +32,7 @@ import { FormOutilComponent } from './pages/outils/form-outil/form-outil.compone
 import { SearchOutilComponent } from './pages/outils/search-outil/search-outil.component';
 import { HomeOutilComponent } from './pages/outils/home-outil/home-outil.component';
 import {MatTabsModule} from '@angular/material/tabs'; 
-import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { JwtModule } from '@auth0/angular-jwt';
 
@@ -82,7 +82,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return localStorage.getItem('access_token');
+          return sessionStorage.getItem('access_token');
         },
         allowedDomains: ['*'], 
         disallowedRoutes: [] 
@@ -91,13 +91,10 @@ import { JwtModule } from '@auth0/angular-jwt';
   
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true,
-    },
+
     provideClientHydration(),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(withInterceptors([TokenInterceptorService])),
 
   ],
   bootstrap: [AppComponent]

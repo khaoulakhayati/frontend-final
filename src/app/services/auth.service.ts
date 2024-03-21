@@ -11,6 +11,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
 
   private baseUrl = environment.apiUrl + 'auth';
+  private baseUrll = environment.apiUrl 
   private accessToken: string | undefined;
   private refreshToken: string | undefined;
   private refreshTokenUrl = '${this.baseUrl}/refresh-token';
@@ -21,7 +22,7 @@ export class AuthService {
   }
 
   register(request: RegisterRequest): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}/register`, request);
+    return this.http.post<any>(`${this.baseUrll}users/register`, request);
   }
 
   refreshAccessToken(): Observable<any> {
@@ -53,10 +54,11 @@ export class AuthService {
   logout() {
     this.accessToken = undefined;
     this.refreshToken = undefined;
-    // Supprimer les tokens du stockage de session
+
     sessionStorage.removeItem('user_info');
     sessionStorage.removeItem('user');
-    // Supprimer les cookies
+    sessionStorage.removeItem('access_token');
+    
     document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     document.cookie = 'refresh_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     const url = `${this.baseUrl}/logout`;
@@ -69,15 +71,10 @@ export class AuthService {
 
   getUserBylogin(login: string): Observable<RegisterRequest> {
 
-    const authToken = localStorage.getItem('access_token');
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${authToken}`,
-    });
 
-    const url = `http://localhost:8090/api/v1/auth/loginn/${login}`;
-    return this.http.get<RegisterRequest>(url, { 'headers': headers });
+    const url = `http://localhost:8090/api/v1/users/loginn/${login}`;
+    return this.http.get<RegisterRequest>(url);
   }
 
 

@@ -1,50 +1,75 @@
-import { Injectable } from '@angular/core';
+
 import { AuthService } from './auth.service';
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
-import { Observable, catchError, switchMap, throwError } from 'rxjs';
-import {JwtHelperService} from '@auth0/angular-jwt';
+import { Injectable } from '@angular/core';
+import {
+  HttpInterceptor,
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpErrorResponse
+} from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 
 
-export const TokenInterceptorService : HttpInterceptorFn = (req, next) => {
 
 
 
-  const accessToken =   sessionStorage.getItem('access_token');
 
-  // Clone the request and add the authorization header
-  const authReq = req.clone({
-    setHeaders: {
-      Authorization: `Bearer ${accessToken}`
-    }
-  });
+@Injectable()
+export class TokenInterceptorService implements HttpInterceptor {
 
-  // Log the request
-  console.log('Request with Authorization Token:', authReq);
+  constructor(private authService: AuthService) {}
 
-  // Pass the cloned request with the updated header to the next handler
-  return next(authReq).pipe(
-    catchError((err: any) => { // Remove caught: HttpResponse
-      if (err instanceof HttpErrorResponse) {
-        // Handle HTTP errors
-        if (err.status === 401) {
-          // Specific handling for unauthorized errors         
-          console.error('Unauthorized request:', err);
-          // You might trigger a re-authentication flow or redirect the user here
-        } else {
-          // Handle other HTTP error codes
-          console.error('HTTP error:', err);
-        }
-      } else {
-        // Handle non-HTTP errors
-        console.error('An error occurred:', err);
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // Récupérer le token d'accès depuis le service AuthService
+    const accessToken = localStorage.getItem('accessToken');
+    const refreshToken = localStorage.getItem('refreshToken');
+
+    const authReq = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${accessToken}`
       }
+    });
+    console.log('acec',accessToken)
+    return next.handle(authReq).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401 && refreshToken) {
+          return this.authService.refreshAccessToken().pipe(
+            switchMap((response: any) => {
+              const newAccessToken = response.access_token;
+              const newRefreshToken = response.refresh_token;
 
-      // Re-throw the error to propagate it further
-      return throwError(() => err); 
-    })
-  );;
-};
+              localStorage.setItem('accessToken', newAccessToken);
+              localStorage.setItem('refreshToken', newRefreshToken);
 
+              const updatedReq = req.clone({
+                setHeaders: {
+                  Authorization: `Bearer ${newAccessToken}`
+                }
+              });
+
+             
+              return next.handle(updatedReq);
+            }),
+            catchError(() => {
+              this.authService.logout();
+              return throwError(error);
+            })
+          );
+        }
+
+        return throwError(error);
+      })
+    );
+  }
+}
+
+
+
+
+
+   
 /*
 
 const accessToken = sessionStorage.getItem('access_token');

@@ -5,30 +5,33 @@
       <div class="container">
         <div class="heading">Login</div>
         <br>
-        <form class="form" (ngSubmit)="onSubmit()"> 
+        <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <input
-            placeholder="login"
-            id="login"
-            name="login"
-            type="login"
-            class="input"
-            required=""
-            [(ngModel)]="loginForm.login"
-          />
+          placeholder="login"
+          id="login"
+          name="login"
+          type="login"
+          class="input"
+          formControlName="login"
+        />
+        <br />
+        <div *ngIf="loginForm.get('login')?.invalid && (loginForm.get('login')?.dirty || loginForm.get('login')?.touched)">
+          <span class="error-message">Login is required.</span>
+        </div>
           <br>
           
-          
           <input
-            placeholder="Password"
-            id="password"
-            name="password"
-            type="password"
-            class="input"
-            required=""
-            [(ngModel)]="loginForm.password" 
-          />
-          <br>
-          <span class="forgot-password"><a href="#">Mot passe oublié ?</a></span>
+          placeholder="Password"
+          id="password"
+          name="password"
+          type="password"
+          class="input"
+          formControlName="password"
+        />
+        <br />
+        <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+          <span class="error-message">Password is required.</span>
+        </div>
           <br>
           <br>
           

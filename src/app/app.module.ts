@@ -32,7 +32,7 @@ import { FormOutilComponent } from './pages/outils/form-outil/form-outil.compone
 import { SearchOutilComponent } from './pages/outils/search-outil/search-outil.component';
 import { HomeOutilComponent } from './pages/outils/home-outil/home-outil.component';
 import {MatTabsModule} from '@angular/material/tabs'; 
-import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { JwtModule } from '@auth0/angular-jwt';
 
@@ -75,6 +75,8 @@ import { JwtModule } from '@auth0/angular-jwt';
     MatGridListModule,
     FontAwesomeModule,
     MatTabsModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
       headerName: 'X-XSRF-TOKEN'
@@ -82,7 +84,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
-          return sessionStorage.getItem('access_token');
+          return localStorage.getItem('accessToken');
         },
         allowedDomains: ['*'], 
         disallowedRoutes: [] 
@@ -94,8 +96,12 @@ import { JwtModule } from '@auth0/angular-jwt';
 
     provideClientHydration(),
     provideAnimationsAsync(),
-    provideHttpClient(withInterceptors([TokenInterceptorService])),
-
+    provideHttpClient(withFetch()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

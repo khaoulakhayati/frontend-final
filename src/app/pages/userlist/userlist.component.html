@@ -19,13 +19,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><a href="#">1</a></td>
-            <td>john_doe</td>
-            <td>john</td>
+          <tr *ngFor="let user of users">
+            <td><a href="#">{{user.id}}</a></td>
+            <td>{{user.login}}</td>
+            <td>{{user.email}}</td>
          
             <td>fr</td>
-            <td><span class="badge bg-info">ROLE_USER</span></td>
+            <td><span class="badge bg-info">{{user.profil}}</span></td>
             <td>2024-03-17 15:30</td>
             <td>admin</td>
             <td>2024-03-17 16:45</td>

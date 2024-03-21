@@ -34,7 +34,7 @@ export class CreeuserComponent implements OnInit {
     if (this.registerForm.valid) {
       this.authService.register(this.registerForm.value).subscribe(
         (response) => {
-          this.snackBar.open('Utilisateur enregistré avec succès', 'Fermer', { duration: 3000 });
+          alert('Utilisateur enregistré avec succès');
           this.registerForm.reset();
           window.location.reload();
         },

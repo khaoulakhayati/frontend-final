@@ -35,6 +35,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { JwtModule } from '@auth0/angular-jwt';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { JwtModule } from '@auth0/angular-jwt';
     MatGridListModule,
     FontAwesomeModule,
     MatTabsModule,
+    PaginatorModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
 
     HttpClientXsrfModule.withOptions({

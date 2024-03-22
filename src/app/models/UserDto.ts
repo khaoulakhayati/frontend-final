@@ -12,4 +12,5 @@ export interface UserDto {
     fax?: string;
     email?: string;
     profil?: Profil;
+    site?:string
   }

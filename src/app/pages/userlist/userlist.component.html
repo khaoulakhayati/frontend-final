@@ -2,33 +2,40 @@
     <h2>Utilisateurs</h2>
     
   
-    <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
-      <table class="table table-striped" style="width: 100%; table-layout: auto;">
+    <div class="table-responsive" style="max-height: 640px; overflow-y: auto; 
+    " >
+      <table class="table " style="width: 100%; table-layout: auto; 
+       ">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Login</th>
+            <th>Code</th>
+            <th>Nom &Prénom</th>
             <th>Email</th>
-           
-            <th>Langue</th>
-            <th>Droits</th>
-            <th>Créé le</th>
-            <th>Modifié par</th>
-            <th>Modifié le</th>
+            <th>Profil</th>
+       
+            <th>site</th>
+            <th>Service</th>
+            <th>Telephone</th>
+            <th>Mobile</th>
+            <th>Fax</th>
             <th></th>
+        
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let user of users">
             <td><a href="#">{{user.id}}</a></td>
-            <td>{{user.login}}</td>
+            <td>{{user.code}}</td>
+            <td>{{user.nom}}{{user.prenom}}</td>
             <td>{{user.email}}</td>
-         
-            <td>fr</td>
             <td><span class="badge bg-info">{{user.profil}}</span></td>
-            <td>2024-03-17 15:30</td>
-            <td>admin</td>
-            <td>2024-03-17 16:45</td>
+            <td>{{user.site}}</td>
+            <td>{{user.service}}</td>
+            <td>{{user.telephone}}</td>
+            <td>{{user.mobile}}</td>
+            <td>{{user.fax}}</td>
+           
             <td>
               <div class="btn-group">
                 <button class="btn btn-info btn-sm"><span>Voir</span></button>
@@ -41,13 +48,8 @@
     </div>
   
 
-  
-    <mat-paginator
-    [length]="1000"
-    [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="Select page"
-  >
-  </mat-paginator>
+    <div class="card flex justify-content-center">
+      <p-paginator  [first]="first" [rows]="rows" [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+    </div>
   </div>
   

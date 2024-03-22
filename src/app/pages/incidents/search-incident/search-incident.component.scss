@@ -1,5 +1,4 @@
-$font-family-base: 'Open Sans', 'Arial';
-
+$font-family-base: "Open Sans", "Arial";
 
 .container {
   max-width: 800px;
@@ -9,12 +8,8 @@ $font-family-base: 'Open Sans', 'Arial';
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-
-
-
-
 .material-symbols-outlined {
-  font-family: 'Material Icons Outlined';
+  font-family: "Material Icons Outlined";
   font-weight: normal;
   font-style: normal;
   font-size: 15px;
@@ -27,8 +22,6 @@ $font-family-base: 'Open Sans', 'Arial';
   font-size: 1.2rem;
   font-weight: bold;
 }
-
-
 
 .search-form {
   display: flex;
@@ -70,7 +63,6 @@ mat-select {
   outline: none; /* Supprimez le contour par défaut */
 }
 
-
 mat-checkbox {
   margin-right: 10px; /* Add margin for better spacing */
 }
@@ -80,22 +72,18 @@ input[type="text"] {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  height: 40px; 
-  font-size: 14px; 
-
+  height: 40px;
+  font-size: 14px;
 }
 
 .button-container {
   display: flex;
-  justify-content: flex-end; 
+  justify-content: flex-end;
   gap: 10px;
-  
 }
 
-
-
 .btn-danger {
-  background-color: #546472 ; /* Red color for cancel button */
+  background-color: #546472; /* Red color for cancel button */
   color: #fff;
 }
 
@@ -108,30 +96,22 @@ input[type="text"] {
   opacity: 0.8; /* Add hover effect for buttons */
 }
 
-
 .btn {
-  padding: 6px 10px; 
-  font-size: 12px; 
+  padding: 6px 10px;
+  font-size: 12px;
 }
 
 .mat-icon {
-  font-size: 16px; 
-  margin-right: 4px; 
-  vertical-align: middle; 
+  font-size: 16px;
+  margin-right: 4px;
+  vertical-align: middle;
 }
 
-
-
-/* Affichez les 7 premières colonnes par défaut */
 @media (min-width: 768px) {
-  tr td:nth-child(n+8) {
+  tr td:nth-child(n + 8) {
     display: table-cell;
   }
 }
-
-
-
-
 
 .header {
   text-align: left;
@@ -141,7 +121,7 @@ input[type="text"] {
 h5 {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #24a10b;
+  color: #777;
 }
 
 h6.subheader {
@@ -150,31 +130,28 @@ h6.subheader {
   color: #777;
 }
 
-
-
-
-
-
-/* Styles pour le conteneur de la pagination */
 ul.pagination {
   margin-bottom: 0 !important;
 }
 
-/* Styles pour le conteneur de la table */
+
 .table-container {
   max-height: 300px;
-
 }
 
-/* Styles pour le tableau */
 .table th {
   font-weight: bold;
   color: #686a6d;
 }
 
+.table td {
+  font-weight: normal;
+  color: #686a6d;
+}
+
 .table td,
 .table th {
-  font-size: 0.9rem; 
+  font-size: 0.9rem;
 }
 .table td,
 .table th {
@@ -189,19 +166,13 @@ ul.pagination {
   margin-top: 20px;
 }
 
-
-
-/* Styles pour les lignes de tableau actives */
 .table-responsive tr.active,
 .table-responsive tr.selected-incident {
-  background-color: #cfe5fa; 
-  border-left: 0.5em solid #bdd248; 
+  background-color: #cfe5fa;
+  border-left: 0.5em solid #bdd248;
 }
 
 .search-form input[type="text"],
 .search-form select {
   border-left: 0.5em solid #087441;
 }
-
-
-

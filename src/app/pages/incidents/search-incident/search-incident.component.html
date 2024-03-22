@@ -61,7 +61,7 @@
   </div>
   <div class="container">
     <div class="table-responsive" style="max-height: 370px; overflow-y: auto;" >
-      <table class="table table-striped" style="width: 100%; table-layout: auto;">
+      <table class="table " style="width: 100%; table-layout: auto;">
       <thead>
         <tr>
           <th>Type Incident</th>
@@ -91,12 +91,8 @@
   
     </div>
   
-    <mat-paginator
-      [length]="1000"
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 25, 100]"
-      aria-label="Select page"
-    >
-    </mat-paginator>
+    <div class="card flex justify-content-center">
+      <p-paginator  [first]="first" [rows]="rows" [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
+    </div>
   </div>
   

@@ -1,158 +1,216 @@
 <div id="formAjout" class="form-container">
-    <form *ngIf="isAddingIncident || isEditingIncident">
-  
-      <div class="form-group"   [ngClass]="{'has-data': hasData(formData.typeIncident)}">
-        <label for="typeIncident">
-          <mat-icon>description</mat-icon> Type d'incident:
-        </label>
-        <select id="typeIncident" name="typeIncident" [(ngModel)]="formData.typeIncident" [disabled]="!isEditable">
-          <option>Incident informatique logiciel ou matériel</option>
-          <option>Panne informatique</option>
-          <option>Panne matérielle autre</option>
-          <option>Demande de maintenance préventive</option>
-          <option>Autre demande</option>
-          <option>Prêt d’outil</option>
-        </select>
-      </div>
-      
-      <div class="form-group"  [ngClass]="{'has-data': hasData(formData.refProduit)}">
-        <label for="refProduit">
-          <mat-icon>article</mat-icon> Référence du produit:
-        </label>
-        <select id="refProduit" name="refProduit" [(ngModel)]="formData.refProduit" [disabled]="!isEditable">
-          <option>Produit C</option>
-          <option>Produit B</option>
-          <option>Produit A</option>
-        </select>
-      </div>
-  
-  <div class="form-group" [ngClass]="{'has-data': hasData(formData.numSerie)}">
-    <label for="numSerie">
-      <mat-icon>confirmation_number</mat-icon> Numéro de série:
-    </label>
-    <input type="text" id="numSerie" name="numSerie" [(ngModel)]="formData.numSerie" [disabled]="!isEditable">
-    <button class="btn btn-primary" [disabled]="!isEditable" (click)="showTable = true" >
-      <mat-icon>search</mat-icon> Rechercher un outil
-    </button></div>
-  
-  
-      <div class="form-group"  [ngClass]="{'has-data': hasData(formData.remarque)}">
-        <label for="remarque">
-          <mat-icon>comment</mat-icon> Remarque:
-        </label>
-  
-        <textarea id="remarque" name="remarque" [(ngModel)]="formData.remarque" [disabled]="!isEditable"></textarea>
-      </div>
-  
-      <div class="form-group"  [ngClass]="{'has-data': hasData(formData.typeProbleme)}">
-        <label for="typeProbleme">
-          <mat-icon>error</mat-icon> Type de problème:
-        </label>
-        <select id="typeProbleme" name="typeProbleme" [(ngModel)]="formData.typeProbleme" [disabled]="!isEditable">
-          <option>Problème 1</option>
-          <option>Problème 2</option>
-          <option>Problème 3</option>
-        </select>
-      </div>
-  
-      <div class="form-group"  [ngClass]="{'has-data': hasData(formData.problemeConcret)}">
-        <label for="problemeConcret">
-          <mat-icon>warning</mat-icon> Problème concret:
-        </label>
-        <select id="problemeConcret" name="problemeConcret" [(ngModel)]="formData.problemeConcret" [disabled]="!isEditable">
-          <option>Concret 1</option>
-          <option>Concret 2</option>
-          <option>Concret 3</option>
-          <!-- Ajoutez plus d'options selon vos besoins -->
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label for="transporteur">
-          <mat-icon>local_shipping</mat-icon> Transporteur:
-        </label>
-        <button mat-button (click)="openTransportDialog()" [disabled]="!isEditable">
-          <mat-icon>select_all</mat-icon> Choisir un transporteur
-        </button>    </div>
-  
-        <div class="form-group">
-          <div class="button-container">
-            <!-- Bouton pour modifier ou enregistrer -->
-            <button class="btn btn-primary" type="button" (click)="isEditable ? saveChanges() : enableEdit()">
-              {{ isEditingIncident ? 'Modifier' : 'Enregistrer' }}
-              <mat-icon>{{ isEditingIncident ? 'edit' : 'save' }}</mat-icon>
-            </button>
-            <!-- Bouton Enregistrer -->
-            <button class="btn btn-primary" type="button" *ngIf="isEditingIncident" (click)="saveChanges()">
-              Enregistrer
-              <mat-icon>save</mat-icon>
-            </button>
-          </div>
-        </div>
-        
-    </form>
-  </div>
-      <!-- Contenu de la popup de sélection du transporteur -->
-  <ng-template #transportDialogTemplate>
-    <div class="transport-dialog">
-      <!-- Contenu de la popup de sélection du transporteur -->
-      <h2>Sélectionner un transporteur</h2>
-      <div class="form-group">
-        <label for="transporteur">
-          <mat-icon>local_shipping</mat-icon> Transporteur:
-        </label>
-        <select id="transporteur">
-          <option>Transporteur 1</option>
-        </select>
-      </div>
-  
-      <div class="form-group">
-        <label for="dateExpedition">
-          <mat-icon>event</mat-icon> Date d'expédition:
-        </label>
-        <input type="date" id="dateExpedition">
-      </div>
-  
-      <div class="form-group">
-        <label for="numeroTracking">
-          <mat-icon>format_list_numbered</mat-icon> Numéro de suivi:
-        </label>
-        <input type="text" id="numeroTracking">
-      </div>
-  
-      <div class="form-group">
-        <button class="btn btn-primary">
-          <mat-icon>save</mat-icon> Enregistrer & Fermer
+  <form *ngIf="isAddingIncident || isEditingIncident">
+    <div
+      class="form-group"
+      [ngClass]="{ 'has-data': hasData(formData.typeIncident) }"
+    >
+      <label for="typeIncident">
+        <mat-icon>description</mat-icon> Type d'incident:
+      </label>
+      <select
+        id="typeIncident"
+        name="typeIncident"
+        [(ngModel)]="formData.typeIncident"
+        [disabled]="!isEditable"
+      >
+        <option>Incident informatique logiciel ou matériel</option>
+        <option>Panne informatique</option>
+        <option>Panne matérielle autre</option>
+        <option>Demande de maintenance préventive</option>
+        <option>Autre demande</option>
+        <option>Prêt d’outil</option>
+      </select>
+    </div>
+
+    <div
+      class="form-group"
+      [ngClass]="{ 'has-data': hasData(formData.refProduit) }"
+    >
+      <label for="refProduit">
+        <mat-icon>article</mat-icon> Référence du produit:
+      </label>
+      <select
+        id="refProduit"
+        name="refProduit"
+        [(ngModel)]="formData.refProduit"
+        [disabled]="!isEditable"
+      >
+        <option>Produit C</option>
+        <option>Produit B</option>
+        <option>Produit A</option>
+      </select>
+    </div>
+
+    <div
+      class="form-group"
+      [ngClass]="{ 'has-data': hasData(formData.numSerie) }"
+    >
+      <label for="numSerie">
+        <mat-icon>confirmation_number</mat-icon> Numéro de série:
+      </label>
+      <input
+        type="text"
+        id="numSerie"
+        name="numSerie"
+        [(ngModel)]="formData.numSerie"
+        [disabled]="!isEditable"
+      />
+    </div>
+
+    <div class="form-group" style="margin-left: 82%">
+      <button mat-button [disabled]="!isEditable" (click)="showTable = true">
+        <mat-icon>search</mat-icon> Rechercher un outil
+      </button>
+    </div>
+
+    <div
+      class="form-group"
+      [ngClass]="{ 'has-data': hasData(formData.remarque) }"
+    >
+      <label for="remarque"> <mat-icon>comment</mat-icon> Remarque: </label>
+
+      <textarea
+        id="remarque"
+        name="remarque"
+        [(ngModel)]="formData.remarque"
+        [disabled]="!isEditable"
+      ></textarea>
+    </div>
+
+    <div
+      class="form-group"
+      [ngClass]="{ 'has-data': hasData(formData.typeProbleme) }"
+    >
+      <label for="typeProbleme">
+        <mat-icon>error</mat-icon> Type de problème:
+      </label>
+      <select
+        id="typeProbleme"
+        name="typeProbleme"
+        [(ngModel)]="formData.typeProbleme"
+        [disabled]="!isEditable"
+      >
+        <option>Problème 1</option>
+        <option>Problème 2</option>
+        <option>Problème 3</option>
+      </select>
+    </div>
+
+    <div
+      class="form-group"
+      [ngClass]="{ 'has-data': hasData(formData.problemeConcret) }"
+    >
+      <label for="problemeConcret">
+        <mat-icon>warning</mat-icon> Problème concret:
+      </label>
+      <select
+        id="problemeConcret"
+        name="problemeConcret"
+        [(ngModel)]="formData.problemeConcret"
+        [disabled]="!isEditable"
+      >
+        <option>Concret 1</option>
+        <option>Concret 2</option>
+        <option>Concret 3</option>
+        <!-- Ajoutez plus d'options selon vos besoins -->
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="transporteur">
+        <mat-icon>local_shipping</mat-icon> Transporteur:
+      </label>
+      <button
+        mat-button
+        (click)="openTransportDialog()"
+        [disabled]="!isEditable"
+      >
+        <mat-icon>select_all</mat-icon> Choisir un transporteur
+      </button>
+    </div>
+
+    <div class="form-group">
+      <div class="button-container">
+        <!-- Bouton pour modifier ou enregistrer -->
+        <button
+          class="btn btn-primary"
+          type="button"
+          (click)="isEditable ? saveChanges() : enableEdit()"
+        >
+          {{ isEditingIncident ? "Modifier" : "Enregistrer" }}
+          <mat-icon>{{ isEditingIncident ? "edit" : "save" }}</mat-icon>
+        </button>
+        <!-- Bouton Enregistrer -->
+        <button
+          class="btn btn-primary"
+          type="button"
+          *ngIf="isEditingIncident"
+          (click)="saveChanges()"
+        >
+          Enregistrer
+          <mat-icon>save</mat-icon>
         </button>
       </div>
     </div>
-  </ng-template>
-  
-  
-  
+  </form>
+</div>
+<!-- Contenu de la popup de sélection du transporteur -->
+<ng-template #transportDialogTemplate>
+  <div class="transport-dialog">
+    <!-- Contenu de la popup de sélection du transporteur -->
+    <h2>Sélectionner un transporteur</h2>
+    <div class="form-group">
+      <label for="transporteur">
+        <mat-icon>local_shipping</mat-icon> Transporteur:
+      </label>
+      <select id="transporteur">
+        <option>Transporteur 1</option>
+      </select>
+    </div>
 
+    <div class="form-group">
+      <label for="dateExpedition">
+        <mat-icon>event</mat-icon> Date d'expédition:
+      </label>
+      <input type="date" id="dateExpedition" />
+    </div>
 
+    <div class="form-group">
+      <label for="numeroTracking">
+        <mat-icon>format_list_numbered</mat-icon> Numéro de suivi:
+      </label>
+      <input type="text" id="numeroTracking" />
+    </div>
 
-
-      <!-- Tableau -->
-      <div class="table-responsive" style="max-height: 300px; overflow-y: auto;" *ngIf="showTable" >
-        <table class="table table-striped" style="width: 100%; table-layout: auto;">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Colonne 1</th>
-          <th>Colonne 2</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><a href="#">1</a></td>
-        
-       
-          <td>Donnée 1</td>
-          <td>Donnée 2</td>
-        
-        </tr>
-      </tbody>
-    </table>
+    <div class="form-group">
+      <button class="btn btn-primary">
+        <mat-icon>save</mat-icon> Enregistrer & Fermer
+      </button>
+    </div>
   </div>
+</ng-template>
+
+<!-- Tableau -->
+<div
+  class="table-responsive"
+  style="max-height: 300px; overflow-y: auto"
+  *ngIf="showTable"
+>
+  <table class="table" style="width: 100%; table-layout: auto">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Colonne 1</th>
+        <th>Colonne 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="#">1</a></td>
+
+        <td>Donnée 1</td>
+        <td>Donnée 2</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

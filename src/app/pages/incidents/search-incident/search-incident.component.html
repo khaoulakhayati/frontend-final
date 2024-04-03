@@ -1,51 +1,49 @@
-
 <div class="container">
-    <div class="header">
-      <h5>Gestion des incidents</h5>
-      <h6 class="subheader">Rechercher un incident</h6>
+  <!--
+  <div class="header">
+      <h5>Unified Search</h5>
+      <input class="styled" type="button" value="Customer search" />
+      <input class="styled" type="button" value="Tool search" />
+      <input class="styled" type="button" value="Incident search" />
     </div>
-    <div class="search-form">
-      <form [formGroup]="options">
-        <div class="search-criteria">
-          <div class="criteria-item">
-            <label for="product">Produit: <mat-icon>laptop</mat-icon> </label>
-            
-            <mat-form-field
-              [hideRequiredMarker]="hideRequiredControl.value"
-              [floatLabel]="getFloatLabelValue()"
-            >
-              <mat-select required>
-                <mat-option>-- Aucun --</mat-option>
-                <mat-option value="option">Option</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="criteria-item">
-            <label for="incidentType">Type Incident:  <mat-icon>bug_report</mat-icon></label>
-           
-            <mat-form-field
-              [hideRequiredMarker]="hideRequiredControl.value"
-              [floatLabel]="getFloatLabelValue()"
-            >
-              <mat-select required>
-                <mat-option>-- Aucun --</mat-option>
-                <mat-option value="option">Option</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-        </div>
-  
+    -->
+    <mat-tab-group>
+      <mat-tab label="Customer search">
         <div class="search-options">
           <div class="option-item">
-            <input type="radio" name="option" id="serialNumber" (change)="toggleField('serialNumber')">
-            <label for="serialNumber" class="code-label">Numéro de série</label>
-            <input type="text" [disabled]="!isSerialNumberSelected">
+            <input type="radio" name="option" id="customerID" (change)="toggleField('customerID')">
+            <label for="customerID" class="code-label">by customer id   </label>
+            <input type="text" [disabled]="!iscustomerIDSelected">
           </div>
           <div class="option-item">
-            <input type="radio" name="option" id="code" (change)="toggleField('code')">
-            <label for="code" class="code-label">Code</label>
-            <input type="text" [disabled]="!isCodeSelected">
+            <input type="radio" name="option" id="customerE-mail" (change)="toggleField('customerE-mail')">
+            <label for="customerE-mail" class="code-label">by customer e-mail  </label>
+            <input type="text" [disabled]="!iscustomerEmailSelected">
           </div>
+          <div class="option-item">
+            <input type="radio" name="option" id="contractNumber" (change)="toggleField('contractNumber')">
+            <label for="contractNumber" class="code-label">by contract number  </label>
+            <input type="text" [disabled]="!iscontractNumberSelected">
+          </div>
+          <div class="option-item">
+            <input type="radio" name="option" id="zipCode" (change)="toggleField('zipCode')">
+            <label for="zipCode" class="code-label">by zip code  </label>
+            <input type="text" [disabled]="!iszipCodeSelected">
+          </div>
+          <div class="option-item">
+            <input type="radio" name="option" id="phoneNumber" (change)="toggleField('phoneNumber')">
+            <label for="phoneNumber" class="code-label">by phone number   </label>
+            <input type="text" [disabled]="!isphoneNumberSelected">
+          </div>
+          <div class="option-item">
+            <input type="radio" name="option" id="companyName" (change)="toggleField('companyName')">
+            <label for="companyName" class="code-label">by company name   </label>
+            <input type="text" [disabled]="!iscompanyNameSelected">
+          </div>
+        <div class="option-item">
+          <input type="radio" name="option" id="AgentCustomerId" (change)="toggleField('AgentCustomerId')">
+          <label for="AgentCustomerId" class="code-label">by agent customer id   </label>
+          <input type="text" [disabled]="!isAgentCustomerIdSelected">
         </div>
         <div class="button-container">
           <button class="btn btn-warning" type="button">
@@ -55,10 +53,29 @@
             <mat-icon>cancel</mat-icon> Annuler
           </button>
         </div>
-        
-      </form>
     </div>
-  </div>
+       </mat-tab>
+       <mat-tab label="Tool search">
+        <div class="search-options">
+          <div class="option-item">
+            <input type="radio" name="option" id="customerID" (change)="toggleField('customerID')">
+            <label for="customerID" class="code-label">all elements</label>
+            <select [disabled]="!iscustomerIDSelected">
+              <option value="option1"> 1</option>
+              <option value="option2"> 2</option>
+              <option value="option3">3</option>
+            </select>
+          </div>
+          <div class="option-item">
+            <input type="radio" name="option" id="customerE-mail" (change)="toggleField('customerE-mail')">
+            <label for="customerE-mail" class="code-label">Product name </label>
+            <input type="text" [disabled]="!iscustomerEmailSelected">
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Incident search">
+      </mat-tab>
+    </mat-tab-group>
   <div class="container">
     <div class="table-responsive" style="max-height: 370px; overflow-y: auto;" >
       <table class="table " style="width: 100%; table-layout: auto;">
@@ -71,12 +88,11 @@
           <th>Type de Problème</th>
           <th>Problème Concret</th>
           <th>Transporteur</th>
-          
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let incident of incidents; let i = index" 
-        (click)="selectIncident(incident,i); selectedRowIndex = i" 
+        <tr *ngFor="let incident of incidents; let i = index"
+        (click)="selectIncident(incident,i); selectedRowIndex = i"
         [ngClass]="{'selected-incident': selectedRowIndex === i}">        <td>{{ incident.typeIncident }}</td>
           <td>{{ incident.refProduit }}</td>
           <td>{{ incident.numSerie }}</td>
@@ -84,15 +100,11 @@
           <td>{{ incident.typeProbleme }}</td>
           <td>{{ incident.problemeConcret }}</td>
           <td>{{ incident.transporteur }}</td>
-          
         </tr>
       </tbody>
     </table>
-  
     </div>
-  
     <div class="card flex justify-content-center">
       <p-paginator  [first]="first" [rows]="rows" [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]"></p-paginator>
     </div>
   </div>
-  

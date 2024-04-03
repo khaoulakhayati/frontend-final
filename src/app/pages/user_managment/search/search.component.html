@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="header">
+    <h5>Gestion des utilisateurs</h5>
+    <h6 class="subheader">Rechercher un utilisateur</h6>
+  </div>
+  <div class="search-form">
+    <form [formGroup]="options">
+      <div class="search-criteria">
+        <div class="criteria-item">
+          <label for="agency">Agence: <mat-icon>business</mat-icon> </label>
+          <mat-form-field
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="getFloatLabelValue()"
+          >
+            <mat-select required>
+              <mat-option>-- Aucune --</mat-option>
+              <mat-option value="Agence 1">Agence 1</mat-option>
+              <mat-option value="Agence 2">Agence 2</mat-option>
+              <mat-option value="Agence 3">Agence 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="criteria-item">
+          <label for="profile">Profil: <mat-icon>person</mat-icon></label>
+          <mat-form-field
+            [hideRequiredMarker]="hideRequiredControl.value"
+            [floatLabel]="getFloatLabelValue()"
+          >
+            <mat-select required>
+              <mat-option>-- Aucun --</mat-option>
+              <mat-option value="Profil 1">Profil 1</mat-option>
+              <mat-option value="Profil 2">Profil 2</mat-option>
+              <mat-option value="Profil 3">Profil 3</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="search-options">
+        <div class="option-item">
+          <input type="checkbox" id="lastName" (change)="isLastNameSelected = !isLastNameSelected">
+          <label for="lastName" class="code-label">Nom de famille</label>
+          <input type="text" [disabled]="!isLastNameSelected">
+        </div>
+        <div class="option-item">
+          <input type="checkbox" id="firstName" (change)="isFirstNameSelected = !isFirstNameSelected">
+          <label for="firstName" class="code-label">Prénom</label>
+          <input type="text" [disabled]="!isFirstNameSelected">
+        </div>
+        <div class="option-item">
+          <input type="checkbox" id="username" (change)="isUsernameSelected = !isUsernameSelected">
+          <label for="username" class="code-label">Nom d'utilisateur</label>
+          <input type="text" [disabled]="!isUsernameSelected">
+        </div>
+        <div class="option-item">
+          <input type="checkbox" id="accountEnabled" (change)="isAccountEnabledSelected = !isAccountEnabledSelected">
+          <label for="accountEnabled" class="code-label">Compte activé</label>
+          <mat-radio-group [disabled]="!isAccountEnabledSelected">
+            <mat-radio-button value="yes">Oui</mat-radio-button>
+            <mat-radio-button value="no">Non</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+      <div class="button-container">
+        <button class="btn btn-warning" type="button">
+          <mat-icon>search</mat-icon> Rechercher
+        </button>
+        <button class="btn btn-danger" type="button" (click)="cancelSearch()">
+          <mat-icon>cancel</mat-icon> Annuler
+        </button>
+      </div>
+      
+    </form>
+  </div>
+</div>
+
+<div class="container">
+  <div class="table-responsive" style="max-height: 370px; overflow-y: auto;" >
+    <table class="table " style="width: 100%; table-layout: auto;">
+      <thead>
+        <tr>
+          <th>Agence</th>
+          <th>Profil</th>
+          <th>Nom de famille</th>
+          <th>Prénom</th>
+          <th>Nom d'utilisateur</th>
+          <th>Compte activé</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users; let i = index" 
+        (click)="selectUser(user, i); selectedRowIndex = i" 
+        [ngClass]="{'selected-user': selectedRowIndex === i}">
+
+        <td>{{user.firstName}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.firstName}}</td>
+        <td>{{user.firstName}}</td>
+    
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,17 +1,12 @@
-
-
 .form-group.has-data input[type="text"],
 .form-group.has-data textarea,
 .form-group.has-data select {
   border-left: 0.5em solid #087441;
 }
 
-
-
 textarea#remarque {
   font-size: 14px; 
   width: 49%;
-
 }
 
 .container {
@@ -25,6 +20,7 @@ textarea#remarque {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
 }
+
 .form-group {
   display: flex; 
   flex-direction: row; 
@@ -32,11 +28,10 @@ textarea#remarque {
   margin-bottom: 20px;
   justify-content: space-between; 
 }
+
 .form-group label {
   margin-right: 10px; /* Add margin to the right of the label */
 }
-
-
 
 .form-group {
   margin-bottom: 20px;
@@ -59,6 +54,7 @@ textarea#remarque {
   font-size: 14px;
   margin-right: 10px; /* Add margin to the right */
 }
+
 .form-group button {
   margin-top: 10px;
   padding: 6px 10px; 
@@ -67,22 +63,17 @@ textarea#remarque {
   color: #ffffff;
   border: none;
   border-radius: 5px;
-  
   cursor: pointer;
   transition: background-color 0.3s ease;
-
 }
 
 .form-group button:hover {
   background-color: #080c11;
 }
 
-
 .button-container {
   display: flex;
   justify-content: flex-end;
-  
-  
 }
 
 .material-symbols-outlined {
@@ -95,15 +86,11 @@ textarea#remarque {
   vertical-align: middle;
 }
 
-
-
-
 .mat-icon {
   font-size: 15px; 
   margin-right: 4px; 
   vertical-align: middle; 
 }
-
 
 .transport-dialog {
   width: 600px;
@@ -112,11 +99,7 @@ textarea#remarque {
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /*Ombredelapopup*/padding: 20px;
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  padding: 20px;
 }
 
 .transport-dialog h2 {
@@ -178,10 +161,6 @@ textarea#remarque {
   vertical-align: middle;
 }
 
-
-
-
-
 .alert-error {
   background-color: #f8d7da;
   color: #721c24;
@@ -204,6 +183,7 @@ textarea#remarque {
 .table th {
   font-size: 0.9rem; 
 }
+
 .table td,
 .table th {
   vertical-align: middle;
@@ -216,5 +196,3 @@ textarea#remarque {
 .item-count {
   margin-top: 20px;
 }
-
-

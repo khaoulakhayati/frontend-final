@@ -21,7 +21,6 @@
         <option>Prêt d’outil</option>
       </select>
     </div>
-
     <div
       class="form-group"
       [ngClass]="{ 'has-data': hasData(formData.refProduit) }"
@@ -40,7 +39,6 @@
         <option>Produit A</option>
       </select>
     </div>
-
     <div
       class="form-group"
       [ngClass]="{ 'has-data': hasData(formData.numSerie) }"
@@ -56,19 +54,16 @@
         [disabled]="!isEditable"
       />
     </div>
-
     <div class="form-group" style="margin-left: 82%">
       <button mat-button [disabled]="!isEditable" (click)="showTable = true">
         <mat-icon>search</mat-icon> Rechercher un outil
       </button>
     </div>
-
     <div
       class="form-group"
       [ngClass]="{ 'has-data': hasData(formData.remarque) }"
     >
       <label for="remarque"> <mat-icon>comment</mat-icon> Remarque: </label>
-
       <textarea
         id="remarque"
         name="remarque"
@@ -76,7 +71,6 @@
         [disabled]="!isEditable"
       ></textarea>
     </div>
-
     <div
       class="form-group"
       [ngClass]="{ 'has-data': hasData(formData.typeProbleme) }"
@@ -95,7 +89,6 @@
         <option>Problème 3</option>
       </select>
     </div>
-
     <div
       class="form-group"
       [ngClass]="{ 'has-data': hasData(formData.problemeConcret) }"
@@ -115,7 +108,6 @@
         <!-- Ajoutez plus d'options selon vos besoins -->
       </select>
     </div>
-
     <div class="form-group">
       <label for="transporteur">
         <mat-icon>local_shipping</mat-icon> Transporteur:
@@ -128,7 +120,6 @@
         <mat-icon>select_all</mat-icon> Choisir un transporteur
       </button>
     </div>
-
     <div class="form-group">
       <div class="button-container">
         <!-- Bouton pour modifier ou enregistrer -->
@@ -167,29 +158,25 @@
         <option>Transporteur 1</option>
       </select>
     </div>
-
     <div class="form-group">
       <label for="dateExpedition">
         <mat-icon>event</mat-icon> Date d'expédition:
       </label>
       <input type="date" id="dateExpedition" />
     </div>
-
     <div class="form-group">
       <label for="numeroTracking">
         <mat-icon>format_list_numbered</mat-icon> Numéro de suivi:
       </label>
       <input type="text" id="numeroTracking" />
     </div>
-
     <div class="form-group">
       <button class="btn btn-primary">
-        <mat-icon>save</mat-icon> Enregistrer & Fermer
+        <mat-icon>save</mat-icon> Enregistrer
       </button>
     </div>
   </div>
 </ng-template>
-
 <!-- Tableau -->
 <div
   class="table-responsive"
@@ -207,7 +194,6 @@
     <tbody>
       <tr>
         <td><a href="#">1</a></td>
-
         <td>Donnée 1</td>
         <td>Donnée 2</td>
       </tr>

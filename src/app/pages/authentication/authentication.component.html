@@ -5,17 +5,17 @@
       <div class="container">
         <div class="heading">Login</div>
         <br>
-        <form class="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <form class="form">
           <input
           placeholder="login"
           id="login"
           name="login"
           type="login"
           class="input"
-          formControlName="login"
+
         />
         <br />
-        <div *ngIf="loginForm.get('login')?.invalid && (loginForm.get('login')?.dirty || loginForm.get('login')?.touched)">
+        <div >
           <span class="error-message">Login is required.</span>
         </div>
           <br>
@@ -26,16 +26,16 @@
           name="password"
           type="password"
           class="input"
-          formControlName="password"
+         
         />
         <br />
-        <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+        <div>
           <span class="error-message">Password is required.</span>
         </div>
           <br>
           <br>
           
-          <input   value="Se connecter" type="submit" class="login-button" />
+          <input   value="Se connecter" type="submit" class="login-button" [routerLink]="['/acceuil']" />
         </form>
         <div class="social-account-container">
           <div class="g-recaptcha" data-sitekey="VOTRE_SITE_KEY"></div>

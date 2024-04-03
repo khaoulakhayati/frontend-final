@@ -1,0 +1,97 @@
+.page {
+    color: white;
+    padding: 0 1rem;
+    background: #ffffff;
+  
+    &__box {
+      min-height: px;
+      background: #e7e7e7;
+      margin: 0 -1rem;
+      font-size: 1px;
+    }
+  
+    &__content {
+      min-height: calc(100vh - 178px);
+      border-radius: 10px;
+      margin-top: -2rem;
+      display: flex;
+      overflow-y: auto; /* Ajout de cette ligne */
+      background: rgb(255, 255, 255);
+      color: black;
+      font-size: 2rem;
+  
+      &-data {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+  
+  .page__content {
+    display: flex;
+  }
+  
+  .left-panel,
+  .right-panel {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    width: 50%;
+    height: 100vh;
+    overflow: auto;
+  }
+  
+  html,
+  body {
+    height: 100%;
+    position: 'absolute';
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+  
+  :host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .page {
+    color: white;
+    padding: 0 1rem;
+    background: #dae7ec;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    gap: 10px;
+    /* Alignement à droite */
+  }
+  
+  .material-symbols-outlined {
+    font-family: 'Material Icons Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 15px;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+  }
+  
+  .btn-besoin {
+    background-color: #546472;
+    color: white;
+    font-size: 13px;
+    padding: 6px 12px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mat-icon {
+    font-size: 18px;
+  }
+  

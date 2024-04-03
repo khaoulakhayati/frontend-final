@@ -17,9 +17,7 @@
       <li class="nav-item">
         <a class="nav-link d-flex align-items-center">
           <mat-icon>home</mat-icon>
-          <span class="hidden-md hidden-sm" [routerLink]="['/acceuil']"
-            >Acceuil</span
-          >
+          <span class="hidden-md hidden-sm" [routerLink]="['/acceuil']" >Home</span>
         </a>
       </li>
       <li class="nav-item dropdown">
@@ -32,21 +30,27 @@
           aria-haspopup="true"
           aria-expanded="false"
         >
-          <mat-icon>dashboard</mat-icon>
-          Parc
+        <mat-icon>contact_support</mat-icon>
+        Hot Line
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownParc">
           <li>
             <a class="dropdown-item" href="#" [routerLink]="['/homeOutil']">
               <mat-icon>build</mat-icon>
-              Gestion des outils
+              Unified search
             </a>
           </li>
           <li>
             <a class="dropdown-item" href="#" [routerLink]="['/home']">
               <mat-icon>settings</mat-icon>
-              Gestion des incidents
+              Search serial number doubles
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#" [routerLink]="['/home']">
+              <mat-icon>settings</mat-icon>
+              Stand by incident list
             </a>
           </li>
         </ul>
@@ -62,14 +66,32 @@
           aria-expanded="false"
         >
           <mat-icon>library_books</mat-icon>
-          Devis
+          Sales
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownDevis">
           <li>
             <a class="dropdown-item" href="#">
-              <mat-icon>description</mat-icon>
-              Gestion des devis
+              <mat-icon>check_circle</mat-icon>
+              Validate Sales
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <mat-icon>person_add</mat-icon>
+              Add a new customer
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <mat-icon>find_in_page</mat-icon>
+              Search a customer
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <mat-icon>person_add</mat-icon>
+              Make a new sale
             </a>
           </li>
         </ul>
@@ -85,7 +107,7 @@
           aria-expanded="false"
         >
           <mat-icon>notifications</mat-icon>
-          Alertes
+          Local Stock
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownAlertes">
@@ -97,6 +119,54 @@
           </li>
         </ul>
       </li>
+     
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link d-flex align-items-center dropdown-toggle"
+          href="#"
+          id="navbarDropdownDevis"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <mat-icon>library_books</mat-icon>
+          Repair
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownDevis">
+          <li>
+            <a class="dropdown-item" href="#">
+              <mat-icon>person_add</mat-icon>
+              Repair stock-list
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <mat-icon>person_add</mat-icon>
+              Stand-by incidents list
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <mat-icon>person_add</mat-icon>
+              Repair stock-list report
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <mat-icon>person_add</mat-icon>
+              Search a tool
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#">
+              <mat-icon>person_add</mat-icon>
+Search an incident file            </a>
+          </li>
+        </ul>
+      </li>
+
       <li class="nav-item">
         <a class="nav-link d-flex align-items-center">
           <mat-icon>pie_chart</mat-icon>
@@ -104,15 +174,42 @@
         </a>
       </li>
 
-      <li class="nav-item">
+      <li class="nav-item dropdown">
         <a
-          class="nav-link d-flex align-items-center"
-          [routerLink]="['/listUser']"
+          class="nav-link d-flex align-items-center dropdown-toggle"
+          href="#"
+          id="navbarDropdownParc"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
         >
-          <mat-icon>settings</mat-icon>
-          <span class="caret">Administration</span>
+        <mat-icon>settings</mat-icon>
+          Administration
+          <span class="caret"></span>
         </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownParc">
+          <li>
+            <a class="dropdown-item" href="#" [routerLink]="['/homeuseer']">
+              <mat-icon>perm_identity</mat-icon>
+              Users Managment
+            </a>
+          </li>       
+          <li>
+            <a class="dropdown-item" href="#" [routerLink]="['/']">
+              <mat-icon>business</mat-icon>
+             Agency Managment
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="#" [routerLink]="['/']">
+              <mat-icon>settings_applications</mat-icon>
+              Setup Managment
+            </a>
+          </li>
+        </ul>
       </li>
+    
 
       <li class="nav-item dropdown">
         <a
@@ -135,15 +232,23 @@
               Profile
             </a>
           </li>
+          <li>
+            <a class="dropdown-item" href="#" [routerLink]="['/']">
+              <mat-icon>exit_to_app</mat-icon>
+              Logout
+            </a>
+          </li>
         </ul>
       </li>
-      <li class="nav-item">
-        <a class="nav-link d-flex align-items-center" (click)="logout()">
+    
+    <!--  <li class="nav-item">
+        <a class="nav-link d-flex align-items-center" [routerLink]="['/login']" >
           <mat-icon>exit_to_app</mat-icon>
           <span class="hidden-md hidden-sm">Logout</span>
         </a>
-      </li>
+      </li>-->
       
+
       <!--
           <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownUser">
           

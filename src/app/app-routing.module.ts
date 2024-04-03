@@ -4,14 +4,16 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './pages/incidents/home/home.component';
-import { ManagementUserComponent } from './pages/management-user/management-user.component';
-import { HomeOutilComponent } from './pages/outils/home-outil/home-outil.component';
+import { HomeUserComponent } from './pages/user_managment/home-user/home-user.component';
+import { UserHomeComponent } from './pages/user_managment/user-home/user-home.component';
+
 
 const routes: Routes = [
 
   {
     path: 'navbar',
     component: NavbarComponent,
+ 
   },
   {
     path: 'login',
@@ -20,20 +22,20 @@ const routes: Routes = [
   {
     path: 'acceuil',
     component: DashboardComponent,
+
   },
-
-
+ 
   {
-    path: 'listUser',
-    component:ManagementUserComponent ,
-  },
+    path: 'homeuseer',
+    component: UserHomeComponent ,
+  }
+  
+  
+,
+ 
+  { path: 'home', component: HomeComponent ,
 
-  {
-    path: 'homeOutil',
-    component: HomeOutilComponent,
-  },
-
-  { path: 'home', component: HomeComponent },
+},
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];

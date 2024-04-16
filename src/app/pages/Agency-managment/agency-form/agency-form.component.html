@@ -1,5 +1,5 @@
-<div id="formAjout" class="form-container">
-    <form *ngIf="isAddingUser || isEditingUser">
+<!--<div id="formAjout" class="form-container">
+    <form *ngIf="isAddingAgency || isEditingAgency">
       <div
         class="form-group"
         [ngClass]="{ 'has-data': hasData(formData.agency) }"
@@ -72,16 +72,16 @@
   
       <div
         class="form-group"
-        [ngClass]="{ 'has-data': hasData(formData.username) }"
+        [ngClass]="{ 'has-data': hasData(formData.Agencyname) }"
       >
-        <label for="username">
-          <mat-icon>person</mat-icon> Username
+        <label for="Agencyname">
+          <mat-icon>person</mat-icon> Agencyname
         </label>
         <input
           type="text"
-          id="username"
-          name="username"
-          [(ngModel)]="formData.username"
+          id="Agencyname"
+          name="Agencyname"
+          [(ngModel)]="formData.Agencyname"
           [disabled]="!isEditable"
         />
       </div>
@@ -105,21 +105,21 @@
       </div>
   
       <div class="form-group">
-        <div class="button-container">
+        <div class="button-container"> -->
           <!-- Bouton pour modifier ou enregistrer -->
-          <button
+        <!--- <button
             class="btn btn-primary"
             type="button"
             (click)="isEditable ? saveChanges() : enableEdit()"
           >
-            {{ isEditingUser ? "Modifier" : "Enregistrer" }}
-            <mat-icon>{{ isEditingUser ? "edit" : "save" }}</mat-icon>
-          </button>
+            {{ isEditingAgency ? "Modifier" : "Enregistrer" }}
+            <mat-icon>{{ isEditingAgency ? "edit" : "save" }}</mat-icon>
+          </button> ---> 
           <!-- Bouton Enregistrer -->
-          <button
+          <!--<button
             class="btn btn-primary"
             type="button"
-            *ngIf="isEditingUser"
+            *ngIf="isEditingAgency"
             (click)="saveChanges()"
           >
             Enregistrer
@@ -128,7 +128,7 @@
         </div>
       </div>
     </form>
-  </div>
+  </div>---> 
   
   
   <!-- Contenu de la popup de sélection du transporteur -->

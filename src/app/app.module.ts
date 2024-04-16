@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module'; // Importez votre module de routage
 import { RouterModule } from '@angular/router'; // Importez RouterModule
-
 import { AppComponent } from './app.component';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { FormComponent } from './pages/incidents/form/form.component';
@@ -28,11 +27,25 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { PaginatorModule } from 'primeng/paginator';
-import { HomeUserComponent } from './pages/user_managment/home-user/home-user.component';
-import { FormUserComponent } from './pages/user_managment/form-user/form-user.component';
-import { SearchComponent } from './pages/user_managment/search/search.component';
+
 import { UserHomeComponent } from './pages/user_managment/user-home/user-home.component';
 import { UserFormComponent } from './pages/user_managment/user-form/user-form.component';
+import { UserSearchComponent } from './pages/user_managment/user-search/user-search.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { AutoCompleteModule } from "primeng/autocomplete";
+import { CalendarModule } from "primeng/calendar";
+import { ChipsModule } from "primeng/chips";
+import { DropdownModule } from "primeng/dropdown";
+import { InputMaskModule } from "primeng/inputmask";
+import { InputNumberModule } from "primeng/inputnumber";
+import { CascadeSelectModule } from "primeng/cascadeselect";
+import { MultiSelectModule } from "primeng/multiselect";
+import { InputTextareaModule } from "primeng/inputtextarea";
+import { InputTextModule } from "primeng/inputtext";
+/*import { AgencyFormComponent } from './pages/Agency-managment/agency-form/agency-form.component';
+import { AgencyHomeComponent } from './pages/Agency-managment/agency-home/agency-home.component';
+import { AgencySearchComponent } from './pages/Agency-managment/agency-search/agency-search.component';*/
 
 @NgModule({
   declarations: [
@@ -44,11 +57,12 @@ import { UserFormComponent } from './pages/user_managment/user-form/user-form.co
     DashboardComponent,
     DialogComponent,
     NavbarComponent,
-    HomeUserComponent,
-    FormUserComponent,
-    SearchComponent,
     UserHomeComponent,
     UserFormComponent,
+    UserSearchComponent,
+    //AgencyFormComponent,
+    //AgencyHomeComponent,
+    //AgencySearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +87,17 @@ import { UserFormComponent } from './pages/user_managment/user-form/user-form.co
     FontAwesomeModule,
     MatTabsModule,
     PaginatorModule,
+    BrowserAnimationsModule,
+    AutoCompleteModule,
+    CalendarModule,
+    ChipsModule,
+    DropdownModule,
+    InputMaskModule,
+    InputNumberModule,
+    CascadeSelectModule,
+    MultiSelectModule,
+    InputTextareaModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]

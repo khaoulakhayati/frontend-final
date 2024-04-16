@@ -4,8 +4,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './pages/incidents/home/home.component';
-import { HomeUserComponent } from './pages/user_managment/home-user/home-user.component';
 import { UserHomeComponent } from './pages/user_managment/user-home/user-home.component';
+
 
 
 const routes: Routes = [
@@ -26,16 +26,21 @@ const routes: Routes = [
   },
  
   {
-    path: 'homeuseer',
+    path: 'userhome',
     component: UserHomeComponent ,
   }
-  
-  
-,
- 
-  { path: 'home', component: HomeComponent ,
 
-},
+,
+
+//{
+ // path: 'profileform',
+ // component: ProfileFormComponent
+//  ,
+
+//},
+ 
+  { path: 'home',
+   component:HomeComponent ,},
 
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];

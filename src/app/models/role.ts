@@ -7,5 +7,6 @@ export enum Role {
     DISTRIB = 'DISTRIB',
     DISTRIB_Sales = 'DISTRIB_Sales',
     AGENT_UPTECH = 'AGENT_UPTECH'
+  
   }
   

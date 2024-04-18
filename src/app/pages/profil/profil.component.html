@@ -1,0 +1,67 @@
+<!--<app-navbar></app-navbar>
+<div class="d-flex flex-column align-items-center pt-3">
+    <div class="col-md-4 card card-z1 p-5">
+  
+      <p class="alert alert-success" *ngIf="isLangueEnabled && user?.success">
+        <span><strong>{{ 'user.message.success.profile.saved' | translate }}</strong></span>
+      </p>
+      <p class="alert-danger" *ngIf="isLangueEnabled && user?.error">
+        <span><strong>{{ 'user.message.error.profile.saved' | translate }}</strong></span>
+      </p>
+  
+      <form name="form" role="form" #userForm="ngForm"  (ngSubmit)="updateLangueUser()">
+        <div class="form-group">
+          <label class="form-control-label" for="firstName">{{ 'user.first_name' | translate }}</label>
+          <input type="text" class="form-control" id="firstName" name="firstName"
+                 [value]="user?.prenom"  minlength="1" maxlength="50" [disabled]="true">
+         
+        </div>
+  
+        <div class="form-group">
+          <label class="form-control-label" for="lastName">{{ 'user.last_name' | translate }}</label>
+          <input type="text" class="form-control" id="lastName" name="lastName" #lastName=""
+                 [value]="user?.nom"   minlength="1" maxlength="50"  [disabled]="true">
+      
+        </div>
+  
+        <div class="form-group">
+          <label class="form-control-label" for="email">{{ 'user.email' | translate }}</label>
+          <input type="text" class="form-control" id="email" name="email"
+                 [value]="user?.email"    pattern="[a-zA-Z0-9.\-_]{1,}@[a-zA-Z.\-]{2,}[.]{1}[a-zA-Z]{2,}" required [disabled]="true">
+       
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="site">{{ 'user.site' | translate }}</label>
+          <input type="text" class="form-control" id="site" name="site"
+                 [value]="user?.site.nom"   required [disabled]="true">
+       
+        </div>
+
+
+        <div class="form-group">
+          <label class="form-control-label" for="role">{{ 'user.role' | translate }}</label>
+          <input type="text" class="form-control" id="role" name="role"
+                 [value]="user?.profil"    [disabled]="true">
+       
+        </div>
+  
+  
+  
+
+
+        
+      <div class="form-group">
+        <label class="form-control-label" for="lang">{{'global.lang' | translate}}</label>
+        <select class="custom-select" [(ngModel)]="user.langKey" id="lang" name="lang" #lang="ngModel" required>
+          <option *ngFor="let lang of langList" [value]="lang">{{'global.user.lang.' + lang | translate}}</option>
+        </select>
+       
+        </div>
+
+        <button type="submit" [disabled]="userForm.form.invalid" class="btn btn-success pull-right" style="background-color: #bdd248; font-size: smaller;">
+          {{ 'button.save' | translate }}
+        </button>
+      </form>
+    </div>
+  </div>-->

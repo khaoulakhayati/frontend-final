@@ -1,5 +1,5 @@
 
-/*import { Component, Input, OnChanges, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -12,9 +12,9 @@ export class AgencyFormComponent {
 
     @ViewChild('transportDialogTemplate')
     transportDialogTemplate!: TemplateRef<any>;
-    @Input() isAddingUser: boolean = false;
-    @Input() isEditingUser: boolean = false;
-    @Input() selectedUser!: any;
+    @Input() isAddingAgency: boolean = false;
+    @Input() isEditingAgency: boolean = false;
+    @Input() selectedAgency!: any;
     formData: any = {}; // Stockage des données du formulaire
     @Input() isEditable: boolean = false; 
     showTable: boolean = false; 
@@ -25,16 +25,16 @@ export class AgencyFormComponent {
   
     showForm: boolean = false;
     ngOnChanges(changes: SimpleChanges): void {
-      if (changes['selectedUser'] && this.selectedUser) {
-        this.formData = { ...this.selectedUser };
+      if (changes['selectedAgency'] && this.selectedAgency) {
+        this.formData = { ...this.selectedAgency };
       } else {
         this.formData = {};
       }
     }
   
-    editUser() {
-      console.log('User to modify:', this.selectedUser);
-      this.isEditingUser = true;
+    editAgency() {
+      console.log('Agency to modify:', this.selectedAgency);
+      this.isEditingAgency = true;
       this.showForm = true
     }
     enableEdit() {
@@ -65,4 +65,3 @@ export class AgencyFormComponent {
   
   
   
-*/

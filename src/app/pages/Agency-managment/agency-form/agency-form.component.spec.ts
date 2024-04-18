@@ -1,4 +1,4 @@
-/*import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AgencyFormComponent } from './agency-form.component';
 
@@ -20,4 +20,4 @@ describe('AgencyFormComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-});*/
+});

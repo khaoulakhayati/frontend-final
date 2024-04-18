@@ -1,4 +1,4 @@
-/*import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AgencyHomeComponent } from './agency-home.component';
 
@@ -21,4 +21,3 @@ describe('AgencyHomeComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-*/

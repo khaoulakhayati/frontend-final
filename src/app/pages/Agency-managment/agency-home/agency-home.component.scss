@@ -1,4 +1,4 @@
-/*.page {
+.page {
     color: white;
     padding: 0 1rem;
     background: #ffffff;
@@ -16,7 +16,7 @@
       margin-top: -2rem;
       display: flex;
       overflow-y: auto; /* Ajout de cette ligne */
-      /*background: rgb(255, 255, 255);
+     background: rgb(255, 255, 255);
       color: black;
       font-size: 2rem;
   
@@ -68,7 +68,7 @@
     text-align: center;
     gap: 10px;
     /* Alignement à droite */
-  /*}
+ }
   
   .material-symbols-outlined {
     font-family: 'Material Icons Outlined';
@@ -94,4 +94,4 @@
   .mat-icon {
     font-size: 18px;
   }
-  */
+  

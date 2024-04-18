@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="header">
+      <h5>Agencies Managment</h5>
+    </div>
+    <div class="agency-search-form">
+      <form >
+        <div class="search-criteria">
+          <div class="criteria-item">
+            <label for="agency">Agency: <mat-icon>business_center</mat-icon> </label>
+            <mat-form-field
+              [hideRequiredMarker]="hideRequiredControl.value"
+              [floatLabel]="getFloatLabelValue()"
+            >
+              <mat-select required>
+                <mat-option>-- none --</mat-option>
+                <mat-option >Agency 1</mat-option>
+                <mat-option >Agency 2</mat-option>
+                <mat-option >Agency 3</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="criteria-item">
+            <label for="profile">Profile <mat-icon>person_outline</mat-icon></label>
+            <mat-form-field
+              [hideRequiredMarker]="hideRequiredControl.value"
+              [floatLabel]="getFloatLabelValue()"
+            >
+              <mat-select required>
+                <mat-option>-- Aucun --</mat-option>
+                <mat-option>profile 1</mat-option>
+                <mat-option>profile 2</mat-option>
+                <mat-option>profile 3</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+          
+        
+  
+        <div class="button-container">
+          <button class="btn btn-warning" type="button">
+            <mat-icon>search</mat-icon> Search
+          </button>
+      
+        </div>
+      </form>
+    
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="table-responsive" style="max-height: 370px; overflow-y: auto;" >
+      <table class="table " style="width: 100%; table-layout: auto;">
+        <thead>
+          <tr>
+            <th>agency</th>
+            <th>Profile</th>
+            <th>LastName</th>
+            <th>FirstName</th>
+            <th>agencyname</th>
+            <th>accountEnabled</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let agency of Agencies; let i = index" 
+          (click)="selectAgency(agency, i); selectedRowIndex = i" 
+          [ngClass]="{'selected-agency': selectedRowIndex === i}">
+  
+          <td>{{agency.agency}}</td>
+          <td>{{agency.profile}}</td>
+          <td>{{agency.lastName}}</td>
+          <td>{{agency.firstName}}</td>
+          <td>{{agency.agencyname}}</td>
+          <td>{{agency.accountEnabled}}</td>
+      
+        </tbody>
+      </table>
+    </div>
+    
+  
+  </div>
+  
+  

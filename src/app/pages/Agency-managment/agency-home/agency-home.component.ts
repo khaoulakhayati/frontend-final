@@ -1,4 +1,4 @@
-/*import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { FloatLabelType } from '@angular/material/form-field';
@@ -46,11 +46,11 @@ export class AgencyHomeComponent {
        this.showForm = true;
        this.isEditable = true;
        // Si l'édition est souhaitée dès la modification, décommentez cette ligne
-       /*if (this.selectedAgency) {
+       if (this.selectedAgency) {
          this.selectedAgency.emit(this.selectedAgency);
    
-     }*/
-     /*}
+     }
+    }
      cancelForm() {
        this.showForm = false;
        this.isAddingAgency = false;
@@ -64,4 +64,3 @@ export class AgencyHomeComponent {
    }
  
 
-*/

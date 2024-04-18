@@ -1,4 +1,4 @@
-<!--<div id="formAjout" class="form-container">
+<div id="formAjout" class="form-container">
     <form *ngIf="isAddingAgency || isEditingAgency">
       <div
         class="form-group"
@@ -105,18 +105,18 @@
       </div>
   
       <div class="form-group">
-        <div class="button-container"> -->
+        <div class="button-container"> 
           <!-- Bouton pour modifier ou enregistrer -->
-        <!--- <button
+       <button
             class="btn btn-primary"
             type="button"
             (click)="isEditable ? saveChanges() : enableEdit()"
           >
             {{ isEditingAgency ? "Modifier" : "Enregistrer" }}
             <mat-icon>{{ isEditingAgency ? "edit" : "save" }}</mat-icon>
-          </button> ---> 
+          </button> 
           <!-- Bouton Enregistrer -->
-          <!--<button
+    <button
             class="btn btn-primary"
             type="button"
             *ngIf="isEditingAgency"
@@ -128,7 +128,7 @@
         </div>
       </div>
     </form>
-  </div>---> 
+  </div>
   
   
   <!-- Contenu de la popup de sélection du transporteur -->
@@ -142,7 +142,7 @@
     style="max-height: 300px; overflow-y: auto"
     *ngIf="showTable"
   >
-    <!-- Ajoutez le contenu du tableau si nécessaire 
+    <!-- Ajoutez le contenu du tableau si nécessaire -->
     <table class="table" style="width: 100%; table-layout: auto">
       <thead>
         <tr>
@@ -159,6 +159,5 @@
         </tr>
       </tbody>
     </table>
-    </table> -->
+
   </div>
-  

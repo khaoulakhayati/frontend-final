@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class AgenceService {
 
-  private apiUrl = 'http://localhost:8081/agences'; // Remplacez par l'URL de votre API backend
+  private apiUrl = 'http://localhost:8080/agences'; // Remplacez par l'URL de votre API backend
 
   constructor(private http: HttpClient) { }
 

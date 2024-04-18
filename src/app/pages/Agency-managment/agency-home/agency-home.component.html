@@ -1,11 +1,10 @@
-<!--<app-navbar></app-navbar>
+<app-navbar></app-navbar>
 <div class="container-fluid page" style="border: 1px solid #BDD248">
   <div class="d-flex page__box p-3 mt-2"></div>
   <div class="page__content shadow p-2 position-relative">
-    <div class="left-panel" style="border: 0.5px solid #BDD248">-->
-    <!---  <app-Agency-search (selectedAgency)="onAgencySelected($event)"<
-      /app-Agency-search> -->
-    <!--</div>
+    <div class="left-panel" style="border: 0.5px solid #BDD248">
+      <app-agency-search (selectedUser)="onAgencySelected($event)"></app-agency-search>
+ </div>
     <div class="right-panel" style="border: 0.5px solid #BDD248">
       <div class="button-container">
         <button class="btn btn-besoin" type="button" *ngIf="isEditingAgency">
@@ -17,9 +16,9 @@
         <button class="btn btn-besoin" (click)="toggleForm()">
           <mat-icon>add</mat-icon> Ajouter
         </button>
-      </div>-->
+      </div>
       <!-- Affichage du formulaire d'ajout ou de modification -->
-   <!--<app-agency-form
+   <app-agency-form
         *ngIf="isAddingAgency || isEditingAgency"
         [isAddingAgency]="isAddingAgency"
         [isEditingAgency]="isEditingAgency"
@@ -28,4 +27,4 @@
       ></app-agency-form>
     </div>
   </div>
-</div>-->
+</div>

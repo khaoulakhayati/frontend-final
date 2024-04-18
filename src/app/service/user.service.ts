@@ -7,10 +7,10 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8081/users'; // Remplacez par l'URL de votre API backend
+  private apiUrl = 'http://localhost:8080/users'; // Remplacez par l'URL de votre API backend
 
   constructor(private http: HttpClient) { }
-//get user by id a faire 
+ 
   // Récupérer la liste des utilisateurs
   getUsers(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl)
@@ -28,6 +28,16 @@ export class UserService {
         catchError(this.handleError)
       );
   }
+  
+  getAllUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/all`)   .pipe(
+      catchError(this.handleError)
+    );
+  }
+  getCurrentUser(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/current-user`)   .pipe(
+      catchError(this.handleError)
+    );}
 
   // Créer un nouvel utilisateur
   createUser(user: any): Observable<any> {
@@ -61,3 +71,17 @@ export class UserService {
     return throwError('Something bad happened; please try again later.'); // Retourne un observable d'erreur avec un message par défaut
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

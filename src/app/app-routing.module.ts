@@ -5,7 +5,7 @@ import { AuthenticationComponent } from './pages/authentication/authentication.c
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './pages/incidents/home/home.component';
 import { UserHomeComponent } from './pages/user_managment/user-home/user-home.component';
-
+import { AgencyHomeComponent } from './pages/Agency-managment/agency-home/agency-home.component';
 
 
 const routes: Routes = [
@@ -38,6 +38,11 @@ const routes: Routes = [
 //  ,
 
 //},
+{
+  path: 'agence',
+  component: AgencyHomeComponent,
+
+},
  
   { path: 'home',
    component:HomeComponent ,},

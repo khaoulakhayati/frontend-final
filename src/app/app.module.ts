@@ -32,7 +32,6 @@ import { UserHomeComponent } from './pages/user_managment/user-home/user-home.co
 import { UserFormComponent } from './pages/user_managment/user-form/user-form.component';
 import { UserSearchComponent } from './pages/user_managment/user-search/user-search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AutoCompleteModule } from "primeng/autocomplete";
 import { CalendarModule } from "primeng/calendar";
 import { ChipsModule } from "primeng/chips";
@@ -43,9 +42,13 @@ import { CascadeSelectModule } from "primeng/cascadeselect";
 import { MultiSelectModule } from "primeng/multiselect";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputTextModule } from "primeng/inputtext";
-/*import { AgencyFormComponent } from './pages/Agency-managment/agency-form/agency-form.component';
+//import { ProfilComponent } from './pages/profil/profil.component';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { AgencyFormComponent } from './pages/Agency-managment/agency-form/agency-form.component';
 import { AgencyHomeComponent } from './pages/Agency-managment/agency-home/agency-home.component';
-import { AgencySearchComponent } from './pages/Agency-managment/agency-search/agency-search.component';*/
+import { AgencySearchComponent } from './pages/Agency-managment/agency-search/agency-search.component';
 
 @NgModule({
   declarations: [
@@ -60,13 +63,15 @@ import { AgencySearchComponent } from './pages/Agency-managment/agency-search/ag
     UserHomeComponent,
     UserFormComponent,
     UserSearchComponent,
-    //AgencyFormComponent,
-    //AgencyHomeComponent,
-    //AgencySearchComponent,
+    //ProfilComponent,
+    AgencyFormComponent,
+    AgencyHomeComponent,
+    AgencySearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     RouterModule.forRoot([]), // Ajoutez RouterModule.forRoot([]) ici
     FormsModule,
     ReactiveFormsModule,
@@ -97,9 +102,20 @@ import { AgencySearchComponent } from './pages/Agency-managment/agency-search/ag
     CascadeSelectModule,
     MultiSelectModule,
     InputTextareaModule,
-    InputTextModule
+    InputTextModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);}
+  //The HttpLoaderFactory function is required for AOT (ahead of time) compilation in your project.

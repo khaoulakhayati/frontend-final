@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module'; // Importez votre module de routage
 import { RouterModule } from '@angular/router'; // Importez RouterModule
 import { AppComponent } from './app.component';
-import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { FormComponent } from './pages/incidents/form/form.component';
 import { SearchIncidentComponent } from './pages/incidents/search-incident/search-incident.component';
 import { HomeComponent } from './pages/incidents/home/home.component';
@@ -49,11 +48,12 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { AgencyFormComponent } from './pages/Agency-managment/agency-form/agency-form.component';
 import { AgencyHomeComponent } from './pages/Agency-managment/agency-home/agency-home.component';
 import { AgencySearchComponent } from './pages/Agency-managment/agency-search/agency-search.component';
+import { ListUserComponent } from './pages/list-user/list-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthenticationComponent,
+    //AuthenticationComponent,
     FormComponent,
     SearchIncidentComponent,
     HomeComponent,
@@ -67,6 +67,7 @@ import { AgencySearchComponent } from './pages/Agency-managment/agency-search/ag
     AgencyFormComponent,
     AgencyHomeComponent,
     AgencySearchComponent,
+    ListUserComponent,
   ],
   imports: [
     BrowserModule,

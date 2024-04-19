@@ -61,7 +61,7 @@ hasData(fieldModel: any): boolean {
 }
 
 getUsers() {
-  this.userservice.getUsers()
+  this.userservice.getAllUsers()
       .subscribe((utilisateurs: utilisateur[]) => {
           this.utilisateurs = utilisateurs;
       });

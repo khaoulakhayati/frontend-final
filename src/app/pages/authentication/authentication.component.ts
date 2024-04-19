@@ -14,13 +14,13 @@ import { AuthenticationRequest } from '../../models/AuthenticationRequest';
 
 
   export class AuthenticationComponent {
-  
-    authRequest: AuthenticationRequest = { email: '', password: '' };
+ /* 
+    authRequest: AuthenticationRequest = { username: '', password: '' };
     errorMsg: Array<string> = [];
   
     constructor(
       private router: Router,
-      private authService: AuthenticationService,
+      private authService: AuthService,
       private tokenService: TokenService
     ) {}
   
@@ -42,6 +42,6 @@ import { AuthenticationRequest } from '../../models/AuthenticationRequest';
           }
         }
       });
-    }
+    }*/
   }
   

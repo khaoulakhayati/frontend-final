@@ -7,18 +7,18 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8080/users'; // Remplacez par l'URL de votre API backend
+  private apiUrl = 'http://localhost:8080/api/v1/users'; // Remplacez par l'URL de votre API backend
 
   constructor(private http: HttpClient) { }
  
   // Récupérer la liste des utilisateurs
-  getUsers(): Observable<any[]> {
+  /*getUsers(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl)
       .pipe(
         catchError(this.handleError)
       );
 
-  }
+  }*/
 
   // Récupérer un utilisateur par son ID
   getUserById(userId: number): Observable<any> {

@@ -10,7 +10,7 @@
         <select
           id="agency"
           name="agency"
-          [(ngModel)]="formData.agency"
+          [(ngModel)]="formData.Agence"
           [disabled]="!isEditable"
         >
           <option>Agence 1</option>
@@ -21,51 +21,50 @@
   
       <div
         class="form-group"
-        [ngClass]="{ 'has-data': hasData(formData.profile) }"
+        [ngClass]="{ 'has-data': hasData(formData.role) }"
       >
-        <label for="profile">
+        <label for="role">
           <mat-icon>person</mat-icon> Profile
         </label>
         <select
-          id="profile"
-          name="profile"
-          [(ngModel)]="formData.profile"
+          id="role"
+          name="role"
+          [(ngModel)]="formData.role"
           [disabled]="!isEditable"
         >
-          <option>Profil 1</option>
-          <option>Profil 2</option>
-          <option>Profil 3</option>
+          <option>ADMIN</option>
+          <option>ACTIA</option>
         </select>
       </div>
   
       <div
         class="form-group"
-        [ngClass]="{ 'has-data': hasData(formData.lastName) }"
+        [ngClass]="{ 'has-data': hasData(formData.lastname) }"
       >
-        <label for="lastName">
+        <label for="lastname">
           <mat-icon>person</mat-icon> Last name
         </label>
         <input
           type="text"
-          id="lastName"
-          name="lastName"
-          [(ngModel)]="formData.lastName"
+          id="lastname"
+          name="lastname"
+          [(ngModel)]="formData.lastname"
           [disabled]="!isEditable"
         />
       </div>
   
       <div
         class="form-group"
-        [ngClass]="{ 'has-data': hasData(formData.firstName) }"
+        [ngClass]="{ 'has-data': hasData(formData.firstname) }"
       >
-        <label for="firstName">
+        <label for="firstname">
           <mat-icon>person</mat-icon> First name
         </label>
         <input
           type="text"
-          id="firstName"
-          name="firstName"
-          [(ngModel)]="formData.firstName"
+          id="firstname"
+          name="firstname"
+          [(ngModel)]="formData.firstname"
           [disabled]="!isEditable"
         />
       </div>
@@ -110,9 +109,10 @@
           <button
             class="btn btn-primary"
             type="button"
-            (click)="isEditable ? saveChanges() : enableEdit()"
+            (click)="isEditable ? editUser(): enableEdit()"
           >
             {{ isEditingUser ? "Modifier" : "Enregistrer" }}
+          
             <mat-icon>{{ isEditingUser ? "edit" : "save" }}</mat-icon>
           </button>
           <!-- Bouton Enregistrer -->

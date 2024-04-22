@@ -26,7 +26,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { PaginatorModule } from 'primeng/paginator';
-
 import { UserHomeComponent } from './pages/user_managment/user-home/user-home.component';
 import { UserFormComponent } from './pages/user_managment/user-form/user-form.component';
 import { UserSearchComponent } from './pages/user_managment/user-search/user-search.component';
@@ -48,12 +47,13 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { AgencyFormComponent } from './pages/Agency-managment/agency-form/agency-form.component';
 import { AgencyHomeComponent } from './pages/Agency-managment/agency-home/agency-home.component';
 import { AgencySearchComponent } from './pages/Agency-managment/agency-search/agency-search.component';
-import { ListUserComponent } from './pages/list-user/list-user.component';
+import { AuthenticationComponent } from './pages/authentication/authentication.component';
+import { ProfilComponent } from './pages/profil/profil.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    //AuthenticationComponent,
+    AuthenticationComponent,
     FormComponent,
     SearchIncidentComponent,
     HomeComponent,
@@ -63,11 +63,11 @@ import { ListUserComponent } from './pages/list-user/list-user.component';
     UserHomeComponent,
     UserFormComponent,
     UserSearchComponent,
-    //ProfilComponent,
+    ProfilComponent,
     AgencyFormComponent,
     AgencyHomeComponent,
     AgencySearchComponent,
-    ListUserComponent,
+   
   ],
   imports: [
     BrowserModule,

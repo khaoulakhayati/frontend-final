@@ -1,8 +1,8 @@
-import { utilisateur } from "./user";
+import { User } from "./user";
 
 export interface Agence {
     id: number;
     nom: string;
-    utilisateurs: utilisateur[];
+    Users: User[];
   }
   

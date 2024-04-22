@@ -12,11 +12,15 @@
           <mat-icon>delete</mat-icon> Supprimer
         </button>
         <button class="btn btn-besoin" type="button" (click)="cancelForm()" *ngIf="isAddingUser || isEditingUser">
-          <mat-icon>cancel</mat-icon> Annuler
+          <mat-icon>cancel</mat-icon> Cancel
         </button>
         <button class="btn btn-besoin" (click)="toggleForm()">
-          <mat-icon>add</mat-icon> Ajouter
+          <mat-icon>add</mat-icon> Add
         </button>
+        <button class="btn btn-besoin" (click)="toggleForm()">
+          <mat-icon>save</mat-icon> Save
+        </button>
+        
       </div>
       <!-- Affichage du formulaire d'ajout ou de modification -->
    <app-user-form

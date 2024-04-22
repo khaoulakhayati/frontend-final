@@ -6,7 +6,7 @@ import { HomeComponent } from './pages/incidents/home/home.component';
 import { UserHomeComponent } from './pages/user_managment/user-home/user-home.component';
 import { AgencyHomeComponent } from './pages/Agency-managment/agency-home/agency-home.component';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
-
+import { ProfilComponent } from './pages/profil/profil.component';
 
 const routes: Routes = [
 
@@ -18,6 +18,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: AuthenticationComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfilComponent,
+ 
   },
   {
     path: 'acceuil',

@@ -1,87 +1,69 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { ChangePasswordRequest } from '../models/ChangePasswordRequest';
 import { catchError } from 'rxjs/operators';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8080/api/v1/users'; // Remplacez par l'URL de votre API backend
+  // URL de base pour les appels API vers le backend Spring Boot
+  private apiUrl = 'http://localhost:8080/api/v1/users'; 
+id:any
+  user: any;
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
- 
-  // Récupérer la liste des utilisateurs
-  /*getUsers(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl)
-      .pipe(
-        catchError(this.handleError)
-      );
-
-  }*/
-
-  // Récupérer un utilisateur par son ID
-  getUserById(userId: number): Observable<any> {
-    const url = `${this.apiUrl}/${userId}`;
-    return this.http.get<any>(url)
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
-  
-  getAllUsers(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/all`)   .pipe(
-      catchError(this.handleError)
-    );
-  }
-  getCurrentUser(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/current-user`)   .pipe(
-      catchError(this.handleError)
-    );}
-
-  // Créer un nouvel utilisateur
-  createUser(user: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/register`, user)
-      .pipe(
-        catchError(this.handleError)
-      );
+  // Obtenir la liste de tous les utilisateurs
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/all`);
   }
 
-  // Mettre à jour un utilisateur existant
-  updateUser(user: any): Observable<any> {
-    const url = `${this.apiUrl}/update${user.id}`;
-    return this.http.put<any>(url, user)
-      .pipe(
-        catchError(this.handleError)
-      );
+  // Obtenir un utilisateur spécifique par son ID
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/${id}`);
   }
+  getCurrentUser(): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/current-user`);
+  }
+// Store function: Add or Update user based on presence of id
 
-  // Supprimer un utilisateur
-  deleteUser(userId: number): Observable<any> {
-    const url = `${this.apiUrl}/delete${userId}`;
-    return this.http.delete<any>(url)
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
+store(res: any): Observable<any> {
+  this. user = JSON.parse(JSON.stringify(res));
 
-  // Gestion des erreurs
-  private handleError(error: any): Observable<any> {
-    console.error('An error occurred:', error);
-    return throwError('Something bad happened; please try again later.'); // Retourne un observable d'erreur avec un message par défaut
-  }
+  return of (null); 
 }
 
 
+  // Ajouter un nouvel utilisateur
+  // Remarque: Votre contrôleur ne semble pas avoir un endpoint pour ajouter un nouvel utilisateur directement. Si besoin, il faut l'implémenter côté backend.
 
+  // Mettre à jour un utilisateur
+  updateUser(id: number, user: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/${id}`, user, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
 
+  // Supprimer un utilisateur
+  deleteUser(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/users/${id}`, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
 
-
-
-
-
-
-
-
-
+  // Changer le mot de passe d'un utilisateur
+  changePassword(changePasswordRequest: ChangePasswordRequest): Observable<any> {
+    return this.http.patch(`${this.apiUrl}`, changePasswordRequest, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
+  }
+}
 

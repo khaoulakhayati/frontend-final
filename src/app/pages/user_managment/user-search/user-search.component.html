@@ -62,14 +62,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users; let i = index" 
+        <tr *ngFor="let user of userlist; let i = index" 
         (click)="selectUser(user, i); selectedRowIndex = i" 
         [ngClass]="{'selected-user': selectedRowIndex === i}">
 
-        <td>{{user.agency}}</td>
-        <td>{{user.profile}}</td>
-        <td>{{user.lastName}}</td>
-        <td>{{user.firstName}}</td>
+        <td>{{user.agence}}</td>
+        <td>{{user.role}}</td>
+        <td>{{user.lastname}}</td>
+        <td>{{user.firstname}}</td>
         <td>{{user.username}}</td>
         <td>{{user.accountEnabled}}</td>
     

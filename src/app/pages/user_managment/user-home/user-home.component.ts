@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { FloatLabelType } from '@angular/material/form-field';
+import { User } from '../../../models/user';
+import { UserService } from '../../../service/user.service';
 @Component({
   selector: 'app-user-home',
   templateUrl: './user-home.component.html',
   styleUrl: './user-home.component.scss'
 })
-export class UserHomeComponent {
+export class UserHomeComponent implements OnInit {
 
   selectedRowIndex: number = -1;
   showForm: boolean = false;
@@ -15,8 +17,15 @@ export class UserHomeComponent {
   isAddingUser: boolean = false;
   isEditingUser: boolean = false;
   isEditable: boolean = false;
-  constructor(private dialog: MatDialog, private _formBuilder: FormBuilder) {}
-  onUserSelected(user: any) {
+  userlist:any
+  user!: User;
+  constructor(private dialog: MatDialog, private _formBuilder: FormBuilder , private userService : UserService) {}
+  ngOnInit(): void {
+this.userService.getAllUsers().subscribe(data=>{
+  this.userlist=JSON.parse(JSON.stringify(data));
+  console.log("list user",this.userlist)
+})  }
+  onUserSelected(user: User) {
     this.selectedUser = user;
     this.isEditingUser = true;
     this.isEditable = false;
@@ -59,5 +68,6 @@ export class UserHomeComponent {
     this.options.reset();
     this.selectedRowIndex = -1; // Assurez-vous de réinitialiser l'état d'édition
   }
+  
 
 }

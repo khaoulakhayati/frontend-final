@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { FloatLabelType } from '@angular/material/form-field';
 import { UserService } from '../../../service/user.service';
-import { utilisateur } from '../../../models/user';
+import { User } from '../../../models/user';
 import { CLIENT_RENEG_LIMIT } from 'tls';
  
 @Component({
@@ -10,8 +10,8 @@ import { CLIENT_RENEG_LIMIT } from 'tls';
   templateUrl: './user-search.component.html',
   styleUrl: './user-search.component.scss'
 })
-export class UserSearchComponent {
-utilisateurs : utilisateur [] =[];
+export class UserSearchComponent  implements OnInit{
+Users : User [] =[];
   hideRequiredControl = new FormControl(false);
 floatLabelControl = new FormControl('auto' as FloatLabelType);
 options: FormGroup;
@@ -22,12 +22,8 @@ isLastNameSelected: boolean = false;
 isFirstNameSelected: boolean = false;
 isUsernameSelected: boolean = false;
 isAccountEnabledSelected: boolean = false;
-
-users: any[] = [
-  { agency: 'Agence 1', profile: 'Profile 1', lastName: 'Doe', firstName: 'John', username: 'johndoe', accountEnabled: true },
-  { agency: 'Agence 2', profile: 'Profil 2', lastName: 'Smith', firstName: 'Alice', username: 'asmith', accountEnabled: false },
-  { agency: 'Agence 3', profile: 'Profil 3', lastName: 'Brown', firstName: 'Bob', username: 'bbrown', accountEnabled: true },
-];
+userlist:any
+user!: User
 
 @Output() selectedUser: EventEmitter<any> = new EventEmitter<any>();
 
@@ -41,17 +37,18 @@ constructor(private _formBuilder: FormBuilder,private userservice: UserService )
   });
 }
 
-ngOnInit() {
-this.getUsers();
-
-}
+ngOnInit(): void {
+  this.userservice.getAllUsers().subscribe(data=>{
+    this.userlist=JSON.parse(JSON.stringify(data));
+    console.log("list user",this.userlist)
+  })  }
 
 getFloatLabelValue(): FloatLabelType {
   return this.floatLabelControl.value || 'auto';
 }
 
 selectUser(user: any, index: number) {
-  console.log("Utilisateur sélectionné :", user);
+  console.log("User sélectionné :", user);
   this.selectedRowIndex = index;
   this.selectedUser.emit(user);
 }
@@ -62,8 +59,8 @@ hasData(fieldModel: any): boolean {
 
 getUsers() {
   this.userservice.getAllUsers()
-      .subscribe((utilisateurs: utilisateur[]) => {
-          this.utilisateurs = utilisateurs;
+      .subscribe((Users: User[]) => {
+          this.Users = Users;
       });
 }
 

@@ -1,9 +1,9 @@
-
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { AuthenticationRequest } from '../../models/AuthenticationRequest';
 
+ // authentication.component.ts
 
 @Component({
   selector: 'app-authentication',
@@ -14,34 +14,36 @@ import { AuthenticationRequest } from '../../models/AuthenticationRequest';
 
 
   export class AuthenticationComponent {
- /* 
-    authRequest: AuthenticationRequest = { username: '', password: '' };
-    errorMsg: Array<string> = [];
-  
+
+    
+    authRequest: AuthenticationRequest = { username: '', password: '' }; 
+    errorMsg: string[] = [];
+    
     constructor(
       private router: Router,
-      private authService: AuthService,
-      private tokenService: TokenService
+      private authService: AuthService
     ) {}
-  
-    login() {
-      this.errorMsg = [];
-      this.authService.authenticate({
-        body: this.authRequest
-      }).subscribe({
-        next: (res) => {
-          this.tokenService.token = res.token as string;
-          this.router.navigate(['books']);
-        },
-        error: (err) => {
-          console.log(err);
-          if (err.error.validationErrors) {
-            this.errorMsg = err.error.validationErrors;
+    login(): void {
+      this.authService.authenticate(this.authRequest).subscribe({
+        next: (response) => {
+          const authToken = response.access_token; // Extract the token value correctly
+          this.authService.storeAuthToken(authToken);
+      
+          if (authToken) {
+            this.router.navigate(['/acceuil']); // Redirect the user
           } else {
-            this.errorMsg.push(err.error.errorMsg);
+            this.errorMsg = ['No access token received'];
           }
+        },
+        error: (error) => {
+          this.errorMsg = [error.error.message || 'Authentication failed']; // Handle errors
         }
       });
-    }*/
-  }
-  
+
+    }
+
+    }
+    
+    
+    
+    

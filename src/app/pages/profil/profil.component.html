@@ -1,7 +1,7 @@
 <!-- Appel du composant de la barre de navigation si nécessaire -->
-<!-- <app-navbar></app-navbar> -->
+ <app-navbar></app-navbar> 
 <div class="d-flex flex-column align-items-center pt-3">
-  <div class="col-md-4 card card-z1 p-5">
+  <div class="col-md-6 card card-z1 p-5"> <!-- Ajustez la largeur si nécessaire -->
 
     <!-- Les messages d'alerte sont maintenant statiques -->
     <p class="alert alert-success" *ngIf="user?.success">
@@ -12,35 +12,91 @@
     </p>
 
     <form name="form" role="form" #userForm="ngForm" (ngSubmit)="updateUserProfile()">
+      
+      <!-- Agency or any other select dropdown -->
       <div class="form-group">
-        <label class="form-control-label" for="firstName">First Name</label>
-        <input type="text" class="form-control" id="firstName" name="firstName"
-               [value]="user?.prenom"  minlength="1" maxlength="50" [disabled]="true">
+        <label for="agency">Agency *</label>
+        <select class="form-control" id="agency" required>
+          <option>ACTIA AUTOMOTIVE</option>
+          <!-- Add other options here -->
+        </select>
+      </div>
+      
+      <!-- Last Name -->
+      <div class="form-group">
+        <label for="lastName">Last Name *</label>
+        <input type="text" class="form-control" id="lastName" required>
+        <div class="invalid-feedback">
+          Please enter a valid lastName.
+        </div>
       </div>
 
+      <!-- First Name -->
       <div class="form-group">
-        <label class="form-control-label" for="lastName">Last Name</label>
-        <input type="text" class="form-control" id="lastName" name="lastName"
-               [value]="user?.nom"  minlength="1" maxlength="50" [disabled]="true">
+        <label for="firstName">First Name *</label>
+        <input type="text" class="form-control" id="firstName" required>
+        <div class="invalid-feedback">
+          Please enter a valid firstName.
+        </div>
       </div>
 
+      <!-- Username -->
       <div class="form-group">
-        <label class="form-control-label" for="email">Username</label>
-        <input type="text" class="form-control" id="email" name="email"
-               [value]="user?.email" pattern="[a-zA-Z0-9.\-_]{1,}@[a-zA-Z.\-]{2,}[.]{1}[a-zA-Z]{2,}" required [disabled]="true">
+        <label for="username">Username *</label>
+        <input type="text" class="form-control" id="username" required>
+        <div class="invalid-feedback">
+          Please enter a valid Username.
+        </div>
+      </div>
+
+   
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" class="form-control" id="email" required>
+        <div class="invalid-feedback">
+          Please enter a valid email address.
+        </div>
+      </div>
+
+      <!-- Profile -->
+      <div class="form-group">
+        <label for="profile">Profile *</label>
+        <select class="form-control" id="profile" required>
+          <option>Administrateur</option>
+          <option>Actia</option>
+          <option>Ams</option>
+          <option>Agent</option>
+          <option>Distributeur </option>
+          <option>Distrib-sales</option>
+          <!-- Add other options here -->
+        </select>
       </div>
 
       
+      <!-- Reports Language -->
       <div class="form-group">
-        <label class="form-control-label" for="role">Role</label>
-        <input type="text" class="form-control" id="role" name="role"
-               [value]="user?.profil" [disabled]="true">
+        <label for="reportsLanguage">Reports language *</label>
+        <select class="form-control" id="reportsLanguage" required>
+          <option>Français</option>
+          <option>English</option>
+
+
+          <!-- Add other options here -->
+        </select>
       </div>
 
-      <!-- Bouton pour sauvegarder les modifications -->
-      <button type="submit" [disabled]="userForm.form.invalid" class="btn btn-success pull-right" style="background-color: #bdd248; font-size: smaller;">
-        Save
-      </button>
+      <!-- Account Enabled Checkbox -->
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="accountEnabled" checked>
+        <label class="form-check-label" for="accountEnabled">Account enabled</label>
+      </div>
+
+      <!-- Buttons for Save, Save & Close, Close -->
+      <button type="submit" class="btn btn-success">Save</button>
+      <button type="button" class="btn btn-primary">Save & Close</button>
+      <button type="button" class="btn btn-secondary">Close</button>
+      
     </form>
   </div>
 </div>

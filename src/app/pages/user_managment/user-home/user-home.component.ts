@@ -47,18 +47,30 @@ this.userService.getAllUsers().subscribe(data=>{
     //this.selectedUser = null;
 
   }
+  addNewUser(){ 
+    this.isAddingUser = true;
+    this.isEditingUser = false;
+    this.isEditable = true;
+    this.showForm=true;
+  }
 
-  editUser() {
-    console.log('User to modify :', this.selectedUser);
+
+  editUser(user:User) {
+    this.selectedUser=user;
     this.isEditingUser = true;
     this.showForm = true;
+    this.isAddingUser=false;
     this.isEditable = true;
+  
     // Si l'édition est souhaitée dès la modification, décommentez cette ligne
     /*if (this.selectedUser) {
       this.selectedUser.emit(this.selectedUser);
 
   }*/
-  }
+  
+
+}
+
   cancelForm() {
     this.showForm = false;
     this.isAddingUser = false;
@@ -68,6 +80,26 @@ this.userService.getAllUsers().subscribe(data=>{
     this.options.reset();
     this.selectedRowIndex = -1; // Assurez-vous de réinitialiser l'état d'édition
   }
-  
+  refreshUsers() {
+    this.userService.getAllUsers().subscribe({
+      next: (users) => {
+        this.userlist = users; // Mettez à jour la liste des utilisateurs dans le composant
+        console.log("User list updated successfully");
+      },
+      error: (err) => {
+        console.error('Error fetching users', err);
+        alert('Failed to refresh the user list'); // Afficher un message d'erreur si la requête échoue
+      }
+    });
+  }
+deleteUser(userId: number) { if (confirm("Are you sure you want to delete this user?")) { this.userService.deleteUser(userId).subscribe( () => { console.log('User deleted successfully'); this.refreshUsers(); // Rafraîchir la liste des utilisateurs après la suppression }, (error) => { console.error('Failed to delete user', error); alert('Failed to delete user'); } ); } }
 
+
+
+
+
+  
+});
+;}
+} 
 }

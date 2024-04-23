@@ -7,14 +7,11 @@
 
     </div>
     <div class="right-panel" style="border: 0.5px solid #BDD248">
-      <div class="button-container">
-        <button class="btn btn-besoin" type="button" *ngIf="isEditingUser">
-          <mat-icon>delete</mat-icon> Supprimer
-        </button>
+      <button class="btn btn-besoin" type="button" (click)="deleteUser(selectedUser?.id)" *ngIf="isEditingUser"> <mat-icon>delete</mat-icon> Supprimer </button>
         <button class="btn btn-besoin" type="button" (click)="cancelForm()" *ngIf="isAddingUser || isEditingUser">
           <mat-icon>cancel</mat-icon> Cancel
         </button>
-        <button class="btn btn-besoin" (click)="toggleForm()">
+        <button class="btn btn-besoin" (click)="addNewUser()">
           <mat-icon>add</mat-icon> Add
         </button>
         <button class="btn btn-besoin" (click)="toggleForm()">
@@ -32,4 +29,3 @@
       ></app-user-form>
     </div>
   </div>
-</div>

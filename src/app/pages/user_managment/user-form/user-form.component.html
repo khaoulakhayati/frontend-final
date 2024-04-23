@@ -116,15 +116,7 @@
             <mat-icon>{{ isEditingUser ? "edit" : "save" }}</mat-icon>
           </button>
           <!-- Bouton Enregistrer -->
-          <button
-            class="btn btn-primary"
-            type="button"
-            *ngIf="isEditingUser"
-            (click)="saveChanges()"
-          >
-            Enregistrer
-            <mat-icon>save</mat-icon>
-          </button>
+         <button class="btn btn-primary" type="button" (click)="isEditable ? saveChanges() : editUser()"> {{ isEditingUser ? "Modifier" : "Enregistrer" }} <mat-icon>{{ isEditingUser ? "edit" : "save" }}</mat-icon> </button>
         </div>
       </div>
     </form>

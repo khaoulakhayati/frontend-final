@@ -7,13 +7,13 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.scss'
 })
-export class UserFormComponent {
+export class UserFormComponent implements OnChanges {
   @ViewChild('transportDialogTemplate')
   transportDialogTemplate!: TemplateRef<any>;
   @Input() isAddingUser: boolean = false;
   @Input() isEditingUser: boolean = false;
   @Input() selectedUser!: any;
-  formData: any = {}; // Stockage des données du formulaire
+  formData: any = {}; // Storage for form data
   @Input() isEditable: boolean = false; 
   showTable: boolean = false; 
   isFieldFocused: boolean = false;
@@ -33,24 +33,28 @@ export class UserFormComponent {
   editUser() {
     console.log('User to modify:', this.selectedUser);
     this.isEditingUser = true;
-    this.showForm = true
+    this.showForm = true;
   }
+
   enableEdit() {
     this.isEditable = true;
   }
-  
+
   saveChanges() {
-    console.log('Changes saved :', this.formData);
+    console.log('Changes saved:', this.formData);
+    this.isEditingUser = false;
     this.isEditable = false;
+    this.showForm = false;
   }
+
   searchTool() {
-    
     this.showTable = true;
   }
-//submit
+
   onFocus() {
     this.isFieldFocused = true;
   }
+
   onBlur() {
     this.isFieldFocused = false;
   }
@@ -60,5 +64,3 @@ export class UserFormComponent {
   }
   
 }
-
-

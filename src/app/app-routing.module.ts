@@ -7,6 +7,7 @@ import { UserHomeComponent } from './pages/user_managment/user-home/user-home.co
 import { AgencyHomeComponent } from './pages/Agency-managment/agency-home/agency-home.component';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { ProfilComponent } from './pages/profil/profil.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 const routes: Routes = [
 
@@ -15,6 +16,7 @@ const routes: Routes = [
     component: NavbarComponent,
  
   },
+
   {
     path: 'login',
     component: AuthenticationComponent,
@@ -37,12 +39,12 @@ const routes: Routes = [
 
 ,
 
-//{
- // path: 'profileform',
- // component: ProfileFormComponent
-//  ,
+{
+ path: 'changepassword',
+ component: ChangePasswordComponent
+  ,
 
-//},
+},
 {
   path: 'agence',
   component: AgencyHomeComponent,

@@ -49,6 +49,7 @@ import { AgencyHomeComponent } from './pages/Agency-managment/agency-home/agency
 import { AgencySearchComponent } from './pages/Agency-managment/agency-search/agency-search.component';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { ProfilComponent } from './pages/profil/profil.component';
+import { ChangePasswordComponent } from './pages/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { ProfilComponent } from './pages/profil/profil.component';
     AgencyFormComponent,
     AgencyHomeComponent,
     AgencySearchComponent,
+    ChangePasswordComponent,
    
   ],
   imports: [

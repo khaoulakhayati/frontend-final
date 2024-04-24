@@ -1,56 +1,46 @@
 <div class="container">
   <div class="header">
-    <h5>Users Managment</h5>
+    <h5>Users Management</h5>
   </div>
   <div class="user-search-form">
-    <form >
+    <form [formGroup]="options">
       <div class="search-criteria">
         <div class="criteria-item">
           <label for="agency">Agency: <mat-icon>business_center</mat-icon> </label>
-          <mat-form-field
-            [hideRequiredMarker]="hideRequiredControl.value"
-            [floatLabel]="getFloatLabelValue()"
-          >
-            <mat-select required>
+          <mat-form-field [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="getFloatLabelValue()">
+            <mat-select required formControlName="agency" (selectionChange)="applyFilter()">
               <mat-option>-- none --</mat-option>
-              <mat-option >Agency 1</mat-option>
-              <mat-option >Agency 2</mat-option>
-              <mat-option >Agency 3</mat-option>
+              <mat-option value="Agency 1">Agency 1</mat-option>
+              <mat-option value="Agency 2">Agency 2</mat-option>
+              <mat-option value="Agency 3">Agency 3</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <div class="criteria-item">
           <label for="profile">Profile <mat-icon>person_outline</mat-icon></label>
-          <mat-form-field
-            [hideRequiredMarker]="hideRequiredControl.value"
-            [floatLabel]="getFloatLabelValue()"
-          >
-            <mat-select required>
+          <mat-form-field [hideRequiredMarker]="hideRequiredControl.value" [floatLabel]="getFloatLabelValue()">
+            <mat-select required formControlName="profile" (selectionChange)="applyFilter()">
               <mat-option>-- Aucun --</mat-option>
-              <mat-option>profile 1</mat-option>
-              <mat-option>profile 2</mat-option>
-              <mat-option>profile 3</mat-option>
+              <mat-option value="profile 1">profile 1</mat-option>
+              <mat-option value="profile 2">profile 2</mat-option>
+              <mat-option value="profile 3">profile 3</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
       </div>
-        
-      
 
       <div class="button-container">
         <button class="btn btn-warning" type="button">
           <mat-icon>search</mat-icon> Search
         </button>
-    
       </div>
     </form>
-  
   </div>
 </div>
 
 <div class="container">
-  <div class="table-responsive" style="max-height: 370px; overflow-y: auto;" >
-    <table class="table " style="width: 100%; table-layout: auto;">
+  <div class="table-responsive" style="max-height: 370px; overflow-y: auto;">
+    <table class="table" style="width: 100%; table-layout: auto;">
       <thead>
         <tr>
           <th>agency</th>
@@ -62,21 +52,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of userlist; let i = index" 
-        (click)="selectUser(user, i); selectedRowIndex = i" 
-        [ngClass]="{'selected-user': selectedRowIndex === i}">
-
-        <td>{{user.agence}}</td>
-        <td>{{user.role}}</td>
-        <td>{{user.lastname}}</td>
-        <td>{{user.firstname}}</td>
-        <td>{{user.username}}</td>
-        <td>{{user.accountEnabled}}</td>
-    
+        <tr *ngFor="let user of userlist; let i = index" (click)="selectUser(user, i)" [ngClass]="{'selected-user': selectedRowIndex === i}">
+          <td>{{ user.agence }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.lastname }}</td>
+          <td>{{ user.firstname }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.accountEnabled }}</td>
+        </tr>
       </tbody>
     </table>
   </div>
-  
-
 </div>
-

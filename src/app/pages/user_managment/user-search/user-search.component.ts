@@ -11,57 +11,60 @@ import { CLIENT_RENEG_LIMIT } from 'tls';
   styleUrl: './user-search.component.scss'
 })
 export class UserSearchComponent  implements OnInit{
-Users : User [] =[];
+  Users: User[] = [];
   hideRequiredControl = new FormControl(false);
-floatLabelControl = new FormControl('auto' as FloatLabelType);
-options: FormGroup;
+  floatLabelControl = new FormControl('auto' as FloatLabelType);
+  options: FormGroup;
 
-isAgencySelected: boolean = false;
-isProfileSelected: boolean = false;
-isLastNameSelected: boolean = false;
-isFirstNameSelected: boolean = false;
-isUsernameSelected: boolean = false;
-isAccountEnabledSelected: boolean = false;
-userlist:any
-user!: User
+  isAgencySelected: boolean = false;
+  isProfileSelected: boolean = false;
+  isLastNameSelected: boolean = false;
+  isFirstNameSelected: boolean = false;
+  isUsernameSelected: boolean = false;
+  isAccountEnabledSelected: boolean = false;
+  userlist: any;
+  user!: User;
 
-@Output() selectedUser: EventEmitter<any> = new EventEmitter<any>();
+  @Output() selectedUser: EventEmitter<any> = new EventEmitter<any>();
 
-selectedRowIndex: number = -1;
+  selectedRowIndex: number = -1;
 
-constructor(private _formBuilder: FormBuilder,private userservice: UserService ) {
-  this.options = this._formBuilder.group({
-    hideRequired: this.hideRequiredControl,
-    floatLabel: this.floatLabelControl,
+  constructor(private _formBuilder: FormBuilder, private userservice: UserService) {
+    this.options = this._formBuilder.group({
+      hideRequired: this.hideRequiredControl,
+      floatLabel: this.floatLabelControl,
+      agency: [''],
+      profile: ['']
+    });
+  }
 
-  });
-}
+  ngOnInit(): void {
+    this.getUsers();
+  }
 
-ngOnInit(): void {
-  this.userservice.getAllUsers().subscribe(data=>{
-    this.userlist=JSON.parse(JSON.stringify(data));
-    console.log("list user",this.userlist)
-  })  }
+  getFloatLabelValue(): FloatLabelType {
+    return this.floatLabelControl.value || 'auto';
+  }
 
-getFloatLabelValue(): FloatLabelType {
-  return this.floatLabelControl.value || 'auto';
-}
+  selectUser(user: any, index: number) {
+    console.log("User sélectionné :", user);
+    this.selectedRowIndex = index;
+    this.selectedUser.emit(user);
+  }
 
-selectUser(user: any, index: number) {
-  console.log("User sélectionné :", user);
-  this.selectedRowIndex = index;
-  this.selectedUser.emit(user);
-}
-
-hasData(fieldModel: any): boolean {
-  return fieldModel && fieldModel !== '';
-}
-
-getUsers() {
-  this.userservice.getAllUsers()
+  getUsers() {
+    this.userservice.getAllUsers()
       .subscribe((Users: User[]) => {
-          this.Users = Users;
+        this.Users = Users;
+        this.userlist = Users; // Assuming userlist is initially the same as Users
       });
-}
+  }
 
+  applyFilter() {
+    const formValue = this.options.value;
+    this.userlist = this.Users.filter((user: User) => {
+      return (!formValue.agency || user.agence === formValue.agency) &&
+        (!formValue.profile || user.role === formValue.profile);
+    });
+  }
 }

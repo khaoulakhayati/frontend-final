@@ -26,9 +26,10 @@ import { AuthenticationRequest } from '../../models/AuthenticationRequest';
     login(): void {
       this.authService.authenticate(this.authRequest).subscribe({
         next: (response) => {
-          const authToken = response.access_token; // Extract the token value correctly
+          const authToken = response.access_token;
+          console.log("authToken") // Extract the token value correctly
           this.authService.storeAuthToken(authToken);
-      
+      console.log('fdsfsdfdsf',authToken)
           if (authToken) {
             this.router.navigate(['/acceuil']); // Redirect the user
           } else {

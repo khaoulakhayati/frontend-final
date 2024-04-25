@@ -40,7 +40,6 @@ import { CascadeSelectModule } from "primeng/cascadeselect";
 import { MultiSelectModule } from "primeng/multiselect";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { InputTextModule } from "primeng/inputtext";
-//import { ProfilComponent } from './pages/profil/profil.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
@@ -50,6 +49,7 @@ import { AgencySearchComponent } from './pages/Agency-managment/agency-search/ag
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { ProfilComponent } from './pages/profil/profil.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { AgencylistComponent } from './agencylist/agencylist.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +69,7 @@ import { ChangePasswordComponent } from './pages/change-password/change-password
     AgencyHomeComponent,
     AgencySearchComponent,
     ChangePasswordComponent,
+    AgencylistComponent,
    
   ],
   imports: [

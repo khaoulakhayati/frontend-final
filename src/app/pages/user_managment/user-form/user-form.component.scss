@@ -1,10 +1,35 @@
+
 .form-group.has-data input[type="text"],
 .form-group.has-data textarea,
 .form-group.has-data select {
   border-left: 0.5em solid #087441;
 }
 
+h1{
 
+  color: #686a6d;
+  font-weight: normal;
+  font-size: 1.4rem;
+  margin-right: 470px; 
+  margin-bottom: -10px;
+
+} 
+
+h2{
+
+  color: #686a6d;
+  font-weight: normal;
+  font-size: 1.4rem;
+  margin-right: 430px; 
+  margin-bottom: -10px;
+
+} 
+h3{
+
+  color: #686a6d;
+  font-weight: normal;
+  font-size: 1rem;
+} 
 
 textarea#remarque {
   font-size: 14px; 
@@ -20,7 +45,7 @@ textarea#remarque {
 .form-container {
   background-color: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ 
   padding: 20px;
 }
 .form-group {
@@ -31,10 +56,9 @@ textarea#remarque {
   justify-content: space-between; 
 }
 .form-group label {
-  margin-right: 10px; /* Add margin to the right of the label */
+  margin-right: 10px; 
+
 }
-
-
 
 .form-group {
   margin-bottom: 20px;
@@ -45,29 +69,29 @@ textarea#remarque {
   color: #686a6d;
   display: block;
   margin-bottom: 8px;
-  font-size: 14px;
+  flex: 1;
+  font-size: 0.8rem;
 }
 
 .form-group select,
-.form-group input[type="text"] {
-  width: 50%; /* Adjust width if needed */
+.form-group input[type="text"],
+.form-group input[type="date"] {
+  width: 50%;
   padding: 10px;
   border: 1px solid #cccccc;
   border-radius: 5px;
   font-size: 14px;
-  margin-right: 10px; /* Add margin to the right */
 }
 .form-group button {
-  margin-top: 10px;
-  padding: 6px 10px; 
-  font-size: 10px; 
-  background-color: #546472;
-  color: #ffffff;
+  background-color:  #2bc3ea;
+  color: #fff; 
   border: none;
-  border-radius: 5px;
-  
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  border-radius: 5px; 
+  padding: 8px 12px; 
+  font-size: 12px; 
+  cursor: pointer; 
+  display: flex; 
+  align-items: center; 
 
 }
 
@@ -214,3 +238,4 @@ textarea#remarque {
 .item-count {
   margin-top: 20px;
 }
+

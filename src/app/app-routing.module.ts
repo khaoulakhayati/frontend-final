@@ -8,7 +8,6 @@ import { AgencyHomeComponent } from './pages/Agency-managment/agency-home/agency
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
 import { ProfilComponent } from './pages/profil/profil.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
-
 const routes: Routes = [
 
   {
@@ -45,6 +44,8 @@ const routes: Routes = [
   ,
 
 },
+
+
 {
   path: 'agence',
   component: AgencyHomeComponent,
